@@ -1,0 +1,100 @@
+version: "3"
+
+services:
+  # profile:
+  #   container_name: profile_profile
+  #   build: .
+  #   volumes:
+  #     - ./src/:/cuoh_profile/src
+  #     - ./test/:/cuoh_profile/test
+  #     - ./credential/:/cuoh_profile/credential/
+  #   ports:
+  #     - 3000:3000
+  #   tty: true
+  #   environment:
+  #     - NODE_ENV=development
+  #     # for DB SERVICE
+  #     - DATABASE_LINK=db
+  #     - DATABASE_USERNAME=postgres
+  #     - DATABASE_PASSWORD=postgres
+  #     - DATABASE_NAME=openhouse
+  #     - DATABASE_PORT=5432
+  #     # ////// Please provide //////
+  #     # DATABASE_SLAVE_LINK
+  #     # DATABASE_SLAVE_PORT
+  #     # DATABASE_SLAVE_USERNAME
+  #     # DATABASE_SLAVE_PASSWORD
+  #     # DATABASE_SLAVE_NAME
+  #     # ////// to enable db replication //////
+  #     - INFLUXDB_LINK=influx
+  #     - INFLUXDB_USERNAME=influx
+  #     - INFLUXDB_PASSWORD=influx
+  #     - INFLUXDB_NAME=influx
+  #     - INFLUXDB_PORT=8086
+  #     # for JWT SERVICE
+  #     # - RS256_PRIVATE=
+  #     # - RS256_PUBLIC=
+  #     - JWT_EXPIRES_IN=3d
+  #     # for FIREBASE SERVICE
+  #     - GOOGLE_APPLICATION_CREDENTIALS=/cuoh_profile/credential/firebase.json
+  #     # for PROMETHEUS
+  #     - METRICS_PATH=metrics
+  #     # for QR
+  #     - WEBSITE_HOST_FOR_QR=https://staging.cuopenhouse.xyz
+  #   command: yarn start:dev
+  #   depends_on: 
+  #     - db
+  #     - influx
+  db:
+    image: postgres
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports: 
+      - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./postgres-context:/docker-entrypoint-initdb.d
+  # pgadmin:
+  #   container_name: profile_pgadmin
+  #   image: dpage/pgadmin4
+  #   environment: 
+  #     - PGADMIN_DEFAULT_EMAIL=it@openhouse
+  #     - PGADMIN_DEFAULT_PASSWORD=12345678
+  #   ports: 
+  #     - 8080:80
+  #   # volumes: 
+  #   #   - ./pgadmin-config:/pgadmin4
+  #   depends_on: 
+  #     - db
+  # influx:
+  #   container_name: profile_influx
+  #   image: influxdb
+  #   environment:
+  #     - INFLUXDB_DB=influx
+  #     - INFLUXDB_HTTP_AUTH_ENABLED=true
+  #     - INFLUXDB_USER=influx
+  #     - INFLUXDB_USER_PASSWORD=influx
+  #     - INFLUXDB_ADMIN_USER=influxadmin
+  #     - INFLUXDB_ADMIN_PASSWORD=influxadmin
+  #   ports:
+  #     - 8086:8086
+  #   volumes:
+  #     - ./influx-data:/var/lib/influxdb
+  # chronograf:
+  #   container_name: profile_chronograf
+  #   image: chronograf
+  #   ports:
+  #     - 8888:8888
+  #   depends_on:
+  #     - influx
+  # prometheus:
+  #   container_name: profile_prometheus
+  #   image: prom/prometheus
+  #   ports:
+  #     - 9090:9090
+  #   volumes:
+  #     - ./prometheus-context:/etc/prometheus
+  #   depends_on:
+  #     - profile
+  
