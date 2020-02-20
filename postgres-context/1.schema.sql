@@ -15,7 +15,7 @@ CREATE TABLE member (
 
 CREATE TABLE car (
   car_id SERIAL PRIMARY KEY,
-  owner_id INT REFERENCES Member(user_id),
+  owner_id INT REFERENCES member(user_id),
   licenseplate TEXT,
   capacity INT,
   car_model TEXT,
@@ -26,12 +26,13 @@ CREATE TABLE car (
 
 CREATE TABLE cardeal (
   car_deal_id SERIAL PRIMARY KEY,
+  car_id INT REFERENCES car(car_id),
   car_info TEXT, 
   priceperday INT,
   rating INT,
   available_start_date DATE,
   available_end_date DATE,
   pickup_province TEXT,
-  lessee_id INT REFERENCES Member(user_id),
-  lesseor_id INT REFERENCES Member(user_id)
+  lessee_id INT REFERENCES member(user_id),
+  lesseor_id INT REFERENCES member(user_id)
 );

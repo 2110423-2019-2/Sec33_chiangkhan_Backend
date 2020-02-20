@@ -1,19 +1,15 @@
-FROM asia.gcr.io/cu-openhouse-2020/backend/profile:latest
+FROM node:12
 
-WORKDIR /cuoh_profile
+WORKDIR /home/node/app
 
-COPY package*.json ./
-
-COPY yarn.lock ./
+COPY package*.json yarn.lock ./
 
 RUN yarn install
 
 COPY . .
 
-RUN npm install -g nodemon
-
 EXPOSE 3000
 
 RUN yarn build
 
-CMD "yarn" "start:prod"
+CMD "yarn" "start"
