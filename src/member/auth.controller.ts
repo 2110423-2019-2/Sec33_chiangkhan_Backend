@@ -1,6 +1,6 @@
-import { Controller, Post, Body, UseInterceptors, ValidationPipe, ForbiddenException, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Body, UseInterceptors, ValidationPipe, ForbiddenException, HttpStatus, Get } from '@nestjs/common';
 import { MemberService } from './member.service';
-import { CookieInterceptor } from './cookie.interceptor';
+import { CookieInterceptor, CookieClearerInterceptor } from '../interceptor/cookie.interceptor';
 import { AuthenticationDto } from './dto/auth.dto';
 import { EntityNotFoundError } from "typeorm/error/EntityNotFoundError";
 
@@ -25,4 +25,8 @@ export class AuthenticationController {
       }
     }
   }
+
+  @Get('logout')
+  @UseInterceptors(CookieClearerInterceptor)
+  logout() { }
 }

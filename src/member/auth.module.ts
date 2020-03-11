@@ -2,10 +2,12 @@ import { JwtModule } from '@nestjs/jwt';
 import { Module } from '@nestjs/common';
 import config from 'src/config';
 import { AuthenticationController } from './auth.controller';
-import { CookieInterceptor } from './cookie.interceptor';
+import { CookieInterceptor } from '../interceptor/cookie.interceptor';
 import { MemberService } from './member.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Member } from './member.entity';
+import { JwtStrategy } from './jwt.strategy';
+import { UserInterceptor } from 'src/interceptor/user.interceptor';
 
 @Module({
   imports: [
@@ -23,15 +25,14 @@ import { Member } from './member.entity';
   controllers: [AuthenticationController],
   providers: [
     MemberService,
-    // JwtStrategy,
+    JwtStrategy,
     // CookieClearerInterceptor,
     CookieInterceptor,
-    // IdExposerInterceptor,
+    UserInterceptor,
   ],
   exports: [
-    MemberService
-    // AuthService,
-    // IdExposerInterceptor,
+    MemberService,
+    UserInterceptor,
   ]
 })
-export class AuthModule {}
+export class AuthModule { }
