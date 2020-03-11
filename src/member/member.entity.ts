@@ -1,5 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
+export interface JWTRepresentation {
+  user: string,
+}
+
 @Entity({ name: 'member' })
 export class Member {
   @PrimaryGeneratedColumn({
