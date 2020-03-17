@@ -7,7 +7,7 @@ import config from "src/config";
 export class UserInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> {
     const req: Request = context.switchToHttp().getRequest<Request>();
-    req.body._user = req.user['user'];
+    req.body._user = req.user['id'];
     return next.handle()
   }
 }

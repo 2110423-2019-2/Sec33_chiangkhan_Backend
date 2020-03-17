@@ -20,6 +20,12 @@ export class Car {
   owner: Promise<Member>;
 
   @Column({
+    type: 'integer',
+    nullable: false,
+  })
+  ownerId: number;
+
+  @Column({
     type: 'text',
     nullable: false,
   })

@@ -31,10 +31,10 @@ export class MemberService {
       }
     }
 
-    await this.memberRepository.findOneOrFail(selector)
+    const { userId } = await this.memberRepository.findOneOrFail(selector)
 
     const payload: JWTRepresentation = {
-      user: username
+      id: userId
     };
 
     return this.jwtService.sign(payload);

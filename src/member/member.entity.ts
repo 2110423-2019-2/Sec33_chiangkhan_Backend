@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 export interface JWTRepresentation {
-  user: string,
+  id: number,
 }
 
 @Entity({ name: 'member' })

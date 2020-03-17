@@ -9,6 +9,7 @@ services:
       - 8080:8080
     depends_on:
       - backend
+    network_mode: host
   backend:
     build: .
     volumes:
@@ -27,7 +28,7 @@ services:
     depends_on:
       - db
   db:
-    image: postgres
+    image: postgres:11.7
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
