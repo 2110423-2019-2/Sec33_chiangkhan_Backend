@@ -1,9 +1,28 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEnum, IsString, IsOptional, IsNumber } from "class-validator";
+import { IsEnum, IsString, IsOptional, IsNumber, IsInstance } from "class-validator";
 import { Car } from "../car.entity";
 
 enum orderby {
   "ASC", "DESC"
+}
+
+export class SortbyDto {
+
+  @ApiProperty({
+    type: "string",
+    description: "Sort column name",
+  })
+  @IsString()
+  sortby: keyof Car;
+
+  @ApiProperty({
+    type: 'enum',
+    enum: ["ASC", "DESC"],
+    description: "Sort column name"
+  })
+  @IsEnum(orderby)
+  orderby: string;
+
 }
 
 export class SelectionDto {
@@ -31,23 +50,16 @@ export class SelectionDto {
   @IsNumber()
   @IsOptional()
   capacity: number;
+
+  @ApiProperty({
+    type: 'string',
+    description: "Sort options",
+    pattern: "{<columnName>} {ASC|DESC}",
+    example: "avgRating ASC"
+  })
+  @IsOptional()
+  sortby: string;
+
+  // parsed sorby options
+  _sortby: SortbyDto;
 }
-
-export class SortbyDto {
-
-  @ApiProperty({
-    type: "string",
-    description: "Sort column name",
-  })
-  @IsString()
-  sortby: keyof Car;
-
-  @ApiProperty({
-    type: 'enum',
-    enum: ["ASC", "DESC"],
-    description: "Sort column name"
-  })
-  @IsEnum(orderby)
-  orderby: string;
-
-} 

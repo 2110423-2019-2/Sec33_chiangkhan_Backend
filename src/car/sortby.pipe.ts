@@ -1,21 +1,25 @@
 import { Injectable, PipeTransform, ArgumentMetadata, Scope, ValidationPipe } from "@nestjs/common";
-import { SortbyDto } from "./dto/selection.dto";
+import { SortbyDto, SelectionDto } from "./dto/selection.dto";
 import { Car } from "./car.entity";
 
 @Injectable()
-export class ParseSortByPipe implements PipeTransform<string, Promise<SortbyDto>> {
+export class ParseSortByPipe implements PipeTransform<SelectionDto, Promise<SelectionDto>> {
 
-  constructor(
-    private readonly validator: ValidationPipe,
-  ) { }
+  async transform(value: SelectionDto, metadata: ArgumentMetadata) {
+    const { sortby } = value
 
-  async transform(value: string, metadata: ArgumentMetadata) {
-    const [sortby, orderby] = value.split(" ")
-    const parsedSortBy: SortbyDto = {
-      sortby: (sortby as keyof Car),
-      orderby,
+    if (sortby !== undefined) {
+
+      const [_sortby, _orderby] = sortby.split(" ")
+      const parsedSortBy: SortbyDto = {
+        sortby: (_sortby as keyof Car),
+        orderby: _orderby,
+      }
+
+      return { ...value, _sortby: parsedSortBy }
+
     }
 
-    return await this.validator.transform(parsedSortBy, metadata)
+    return value
   }
 }

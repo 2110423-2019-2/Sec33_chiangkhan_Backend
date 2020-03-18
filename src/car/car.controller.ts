@@ -7,7 +7,7 @@ import {
   Body,
   Query,
   ValidationPipe,
-  ParseIntPipe,
+  UsePipes,
 } from '@nestjs/common';
 import { Car } from './car.entity';
 import { CarService, CarFilter } from './car.service';
@@ -28,19 +28,21 @@ export class CarController {
   ) { }
 
   @Get()
+  @UsePipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+      transformOptions: { enableImplicitConversion: true }
+    }),
+    new ParseSortByPipe(),
+  )
   getAllCars(
-    @Query(
-      new ValidationPipe({
-        whitelist: true,
-        transform: true,
-        transformOptions: { enableImplicitConversion: true }
-      })
-    ) filter: SelectionDto,
-    @Query('sortby', ParseSortByPipe) sortby: SortbyDto,
+    @Query() query: SelectionDto,
   ): Promise<Car[]> {
+    const { _sortby, ...filter } = query
     return this.carService.findAll(
       filter,
-      sortby
+      _sortby
     );
   }
 
