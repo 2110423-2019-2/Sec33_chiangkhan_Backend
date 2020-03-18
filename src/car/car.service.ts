@@ -4,6 +4,9 @@ import { Car } from "./car.entity";
 import { CarRepository } from "./car.repository";
 import { InsertResult } from "typeorm";
 import { AddCarDto } from "./dto/create-car.dto";
+import { SortbyDto } from "./dto/selection.dto";
+
+export type CarFilter = Partial<Pick<Car, "carType" | "carModel" | "capacity">>
 
 @Injectable()
 export class CarService {
@@ -13,9 +16,18 @@ export class CarService {
     private readonly carRepository: CarRepository,
   ) { }
 
-  async findAll(): Promise<Car[]> {
+  async findAll(
+    where: CarFilter,
+    sortBy: SortbyDto,
+  ): Promise<Car[]> {
     return this.carRepository.find(
-      { relations: ["owner"] }
+      {
+        relations: ["owner"],
+        where,
+        order: {
+          [sortBy.sortby]: sortBy.orderby
+        }
+      }
     );
   }
 

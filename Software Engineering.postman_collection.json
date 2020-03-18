@@ -106,7 +106,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/car/",
+					"raw": "localhost:8080/api/car/?sortby=ownerId DESC&capacity=3&carModel=GMC&carType=personal",
 					"host": [
 						"localhost"
 					],
@@ -115,6 +115,28 @@
 						"api",
 						"car",
 						""
+					],
+					"query": [
+						{
+							"key": "sortby",
+							"value": "ownerId DESC",
+							"description": "{\"carId\" | \"ownerId\" | \"licenseplate\" | \"capacity\" | \"carModel\" | \"carDescription\" | \"carType\" | \"avgRating\" | \"photoOfCarDocument\"} {ASC|DESC}"
+						},
+						{
+							"key": "capacity",
+							"value": "3",
+							"description": "number"
+						},
+						{
+							"key": "carModel",
+							"value": "GMC",
+							"description": "string"
+						},
+						{
+							"key": "carType",
+							"value": "personal",
+							"description": "string"
+						}
 					]
 				}
 			},

@@ -1,4 +1,4 @@
-import { IsString, IsEnum, IsDateString, Matches, IsOptional, IsArray, IsInt, Max, Min, MaxLength, IsNumber } from 'class-validator'
+import { IsString, IsInt, Max, Min, MaxLength } from 'class-validator'
 import { ApiProperty } from "@nestjs/swagger";
 
 export class AddCarDto {
@@ -31,6 +31,14 @@ export class AddCarDto {
   @IsString()
   @MaxLength(50)
   carModel: string;
+
+  @ApiProperty({
+    type: "string",
+    description: "Car's type",
+  })
+  @IsString()
+  @MaxLength(50)
+  carType: string;
 
   @ApiProperty({
     type: "string",

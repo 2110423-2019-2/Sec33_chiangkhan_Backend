@@ -50,6 +50,12 @@ export class Car {
   carDescription: string;
 
   @Column({
+    type: 'text',
+    nullable: false,
+  })
+  carType: string;
+
+  @Column({
     type: 'integer',
     nullable: false,
   })

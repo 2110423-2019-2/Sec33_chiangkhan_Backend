@@ -21,7 +21,8 @@ CREATE TABLE car (
   car_model TEXT,
   car_description TEXT,
   avg_rating INT,
-  photo_of_car_document TEXT
+  photo_of_car_document TEXT,
+  car_type TEXT DEFAULT 'personal'
 );
 
 CREATE TABLE cardeal (

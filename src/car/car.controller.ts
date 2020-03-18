@@ -1,10 +1,22 @@
-import { Controller, Get, UseGuards, UseInterceptors, Body, Post, ValidationPipe } from '@nestjs/common';
+import {
+  Controller,
+  UseGuards,
+  UseInterceptors,
+  Get,
+  Post,
+  Body,
+  Query,
+  ValidationPipe,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { Car } from './car.entity';
-import { CarService } from './car.service';
+import { CarService, CarFilter } from './car.service';
 import { AuthGuard } from '@nestjs/passport';
 import { UserInterceptor } from 'src/interceptor/user.interceptor';
 import { AddCarDto } from './dto/create-car.dto';
 import { InsertResult } from 'typeorm';
+import { SortbyDto, SelectionDto } from './dto/selection.dto';
+import { ParseSortByPipe } from './sortby.pipe';
 
 
 @Controller('car')
@@ -16,8 +28,20 @@ export class CarController {
   ) { }
 
   @Get()
-  getAllCars(): Promise<Car[]> {
-    return this.carService.findAll();
+  getAllCars(
+    @Query(
+      new ValidationPipe({
+        whitelist: true,
+        transform: true,
+        transformOptions: { enableImplicitConversion: true }
+      })
+    ) filter: SelectionDto,
+    @Query('sortby', ParseSortByPipe) sortby: SortbyDto,
+  ): Promise<Car[]> {
+    return this.carService.findAll(
+      filter,
+      sortby
+    );
   }
 
 

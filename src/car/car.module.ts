@@ -1,5 +1,5 @@
 import { Car } from "./car.entity";
-import { Module } from "@nestjs/common";
+import { Module, ValidationPipe } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { CarController } from "./car.controller";
 import { CarService } from "./car.service";
@@ -16,7 +16,8 @@ import { AuthModule } from "src/member/auth.module";
     CarController
   ],
   providers: [
-    CarService
+    CarService,
+    ValidationPipe,
   ],
   exports: [],
 })
