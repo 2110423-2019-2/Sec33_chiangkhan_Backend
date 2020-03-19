@@ -10,12 +10,12 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { Car } from './car.entity';
-import { CarService, CarFilter } from './car.service';
+import { CarService } from './car.service';
 import { AuthGuard } from '@nestjs/passport';
 import { UserInterceptor } from 'src/interceptor/user.interceptor';
 import { AddCarDto } from './dto/create-car.dto';
 import { InsertResult } from 'typeorm';
-import { SortbyDto, SelectionDto } from './dto/selection.dto';
+import { SelectionDto } from './dto/selection.dto';
 import { ParseSortByPipe } from './sortby.pipe';
 
 
