@@ -4,6 +4,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Member, JWTRepresentation } from './member.entity';
 import { MemberRepository } from './member.repository';
 import { sha256, Hasher } from "js-sha256";
+import { CreateMemberDto } from './dto/create-member.dto';
+import { InsertResult } from 'typeorm';
+import { create } from 'domain';
 
 @Injectable(
   { scope: Scope.REQUEST }
@@ -38,5 +41,11 @@ export class MemberService {
     };
 
     return this.jwtService.sign(payload);
+  }
+
+  async registerService(
+    createMemberDto: CreateMemberDto
+  ): Promise<InsertResult> {
+    return this.memberRepository.insert(createMemberDto)
   }
 }
