@@ -32,7 +32,9 @@ export class CarController {
     new ValidationPipe({
       whitelist: true,
       transform: true,
-      transformOptions: { enableImplicitConversion: true }
+      transformOptions: {
+        enableImplicitConversion: true,
+      }
     }),
     new ParseSortByPipe(),
   )
