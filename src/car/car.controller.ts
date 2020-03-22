@@ -9,12 +9,13 @@ import {
   ValidationPipe,
   UsePipes,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { InsertResult } from 'typeorm';
+
 import { Car } from './car.entity';
 import { CarService } from './car.service';
-import { AuthGuard } from '@nestjs/passport';
 import { UserInterceptor } from 'src/interceptor/user.interceptor';
 import { AddCarDto } from './dto/create-car.dto';
-import { InsertResult } from 'typeorm';
 import { SelectionDto } from './dto/selection.dto';
 import { ParseSortByPipe } from './sortby.pipe';
 

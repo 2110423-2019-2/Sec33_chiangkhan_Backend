@@ -56,7 +56,7 @@
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.19.1",
-    "jest": "^24.9.0",
+    "jest": "^25.1.0",
     "prettier": "^1.18.2",
     "supertest": "^4.0.2",
     "ts-jest": "25.1.0",
@@ -71,12 +71,22 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "roots": [
+      "<rootDir>",
+      "<rootDir>/src"
+    ],
+    "modulePaths": [
+      "<rootDir>",
+      "<rootDir>/src"
+    ],
     "testRegex": ".spec.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "coverageDirectory": "../coverage",
+    "modulePathIgnorePatterns": [
+      "postgres-"
+    ],
     "testEnvironment": "node"
   }
 }

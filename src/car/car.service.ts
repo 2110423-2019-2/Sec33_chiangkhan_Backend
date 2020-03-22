@@ -24,7 +24,7 @@ export class CarService {
       {
         relations: ["owner"],
         where,
-        order: (sortBy !== undefined) ? { [sortBy.sortby]: sortBy.orderby } : undefined
+        order: (sortBy != undefined) ? { [sortBy.sortby]: sortBy.orderby } : undefined
       }
     );
   }
