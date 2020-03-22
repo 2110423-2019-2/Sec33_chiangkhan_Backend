@@ -1,3 +1,4 @@
+import { Test } from "@nestjs/testing";
 import { CarRepository } from "./car.repository";
 
 import { CarService } from "./car.service";
@@ -8,9 +9,16 @@ describe('CarService', () => {
   let carRepo: CarRepository;
   let carService: CarService;
 
-  beforeEach(() => {
-    carRepo = new CarRepository();
-    carService = new CarService(carRepo);
+  beforeEach(async () => {
+    const moduleRef = await Test.createTestingModule({
+      providers: [
+        CarService,
+        CarRepository
+      ],
+    }).compile();
+
+    carRepo = moduleRef.get<CarRepository>(CarRepository)
+    carService = moduleRef.get<CarService>(CarService)
   })
 
   describe('findAll', () => {
