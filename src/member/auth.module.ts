@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Member } from './member.entity';
 import { JwtStrategy } from './jwt.strategy';
 import { UserInterceptor } from 'src/interceptor/user.interceptor';
+import { UserController } from './users.controller';
 
 @Module({
   imports: [
@@ -22,7 +23,7 @@ import { UserInterceptor } from 'src/interceptor/user.interceptor';
       Member,
     ])
   ],
-  controllers: [AuthenticationController],
+  controllers: [AuthenticationController, UserController],
   providers: [
     MemberService,
     JwtStrategy,
