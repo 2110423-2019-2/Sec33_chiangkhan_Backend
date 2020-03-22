@@ -29,14 +29,15 @@ describe('CarService', () => {
         },
         null
       )
-      expect(carRepo.find).toBeCalledWith({
-        relations: ["owner"],
-        where: {
-          capacity: 1,
-          carModel: "Toyota",
-          carType: "personal",
-        }
-      })
+      expect(carRepo.find).toBeCalledWith(
+        expect.objectContaining({
+          where: {
+            capacity: 1,
+            carModel: "Toyota",
+            carType: "personal",
+          }
+        })
+      )
 
     })
 
@@ -49,13 +50,13 @@ describe('CarService', () => {
           orderby: "ASC",
         }
       )
-      expect(carRepo.find).toBeCalledWith({
-        relations: ["owner"],
-        where: {},
-        order: {
-          avgRating: "ASC"
-        }
-      })
+      expect(carRepo.find).toBeCalledWith(
+        expect.objectContaining({
+          order: {
+            avgRating: "ASC"
+          }
+        })
+      )
 
     })
 
@@ -87,18 +88,18 @@ describe('CarService', () => {
         licenseplate: "KAWD-758",
         photoOfCarDocument: "[]",
       })
-      expect(carRepo.insert).toBeCalledWith({
-        avgRating: 0,
-        owner: null,
-        carId: null,
-        ownerId: 123,
-        capacity: 1,
-        carDescription: "eiei",
-        carModel: "",
-        carType: "personal",
-        licenseplate: "KAWD-758",
-        photoOfCarDocument: "[]",
-      })
+      expect(carRepo.insert).toBeCalledWith(
+        expect.objectContaining({
+          avgRating: 0,
+          ownerId: 123,
+          capacity: 1,
+          carDescription: "eiei",
+          carModel: "",
+          carType: "personal",
+          licenseplate: "KAWD-758",
+          photoOfCarDocument: "[]",
+        })
+      )
 
     })
 
@@ -117,8 +118,6 @@ describe('CarService', () => {
         expect.objectContaining({
           ownerId: 125,
           avgRating: 0,
-          owner: null,
-          carId: null,
         })
       )
 
