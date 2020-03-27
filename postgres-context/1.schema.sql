@@ -25,15 +25,19 @@ CREATE TABLE car (
   car_type TEXT DEFAULT 'personal'
 );
 
-CREATE TABLE cardeal (
-  car_deal_id SERIAL PRIMARY KEY,
+CREATE TABLE car_available (
+  car_available_id SERIAL PRIMARY KEY,
   car_id INT REFERENCES car(car_id),
-  car_info TEXT, 
-  priceperday INT,
-  rating INT,
-  available_start_date DATE,
-  available_end_date DATE,
-  pickup_province TEXT,
-  lessee_id INT REFERENCES member(user_id),
-  lesseor_id INT REFERENCES member(user_id)
+  pickup_location POINT,
+  start_date TIMESTAMP,
+  end_date TIMESTAMP
+);
+
+CREATE TABLE car_reservation (
+  car_reservation_id SERIAL PRIMARY KEY,
+  car_available_id INT REFERENCES car_available(car_available_id),
+  status TEXT,
+  pickup_date DATE,
+  return_date DATE,
+  return_location POINT
 );

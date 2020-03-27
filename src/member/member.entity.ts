@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, OneToMany } from "typeorm";
+import { Car } from "src/car/car.entity";
 
 export interface JWTRepresentation {
   id: number,
@@ -8,21 +9,19 @@ export interface JWTRepresentation {
 export class Member {
   @PrimaryGeneratedColumn({
     type: "integer",
-    name: "user_id"
   })
   userId: number;
 
-  // @OneToOne(type => Member, {
-  //   primary: true,
-  //   nullable: false,
-  //   onDelete: "CASCADE",
-  //   lazy: true,
-  // })
-  // @JoinColumn({
-  //   name: 'owner_id',
-  //   referencedColumnName: 'user_id',
-  // })
-  // lessee: Promise<Member>;
+  @OneToMany(
+    () => Car,
+    car => car.owner,
+    {
+      lazy: true,
+      eager: false,
+      nullable: true
+    }
+  )
+  ownedCar?: Promise<Car>
 
   @Column({
     type: 'text',

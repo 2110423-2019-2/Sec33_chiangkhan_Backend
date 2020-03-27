@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToMany, ManyToOne } from "typeorm";
 import { Member } from "src/member/member.entity";
+import { CarAvailable } from "src/car-available/car-available.entity";
 
 @Entity({ name: 'car' })
 export class Car {
@@ -8,7 +9,7 @@ export class Car {
   })
   carId: number;
 
-  @OneToOne(() => Member, {
+  @ManyToOne(() => Member, {
     nullable: false,
     onDelete: "CASCADE",
     lazy: true,
@@ -18,6 +19,17 @@ export class Car {
     referencedColumnName: 'userId',
   })
   owner: Promise<Member>;
+
+  @OneToMany(
+    () => CarAvailable,
+    carAvai => carAvai.car,
+    {
+      eager: false,
+      lazy: false,
+      nullable: true,
+    }
+  )
+  availability?: CarAvailable
 
   @Column({
     type: 'integer',

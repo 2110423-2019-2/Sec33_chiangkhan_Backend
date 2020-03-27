@@ -58,9 +58,11 @@ export class CarController {
     return this.carService.add(user, dto)
   }
 
-  // @Get('test')
-  // async test(
-  // ): Promise<string> {
-  //   return `${user}`
-  // }
+  @Get('test')
+  async test(
+  ){
+    return this.carService.findAllAvailable({
+      capacity: 2
+    })
+  }
 }

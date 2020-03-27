@@ -3,7 +3,16 @@ import { CarRepository } from "./car.repository";
 
 import { CarService } from "./car.service";
 import { AddCarDto } from "./dto/create-car.dto";
+import { FindManyOptions, SelectQueryBuilder } from "typeorm";
+import { Car } from "./car.entity";
 jest.mock('./car.repository')
+
+const MockQB: jest.Mock<SelectQueryBuilder<Car>> = jest.fn().mockImplementation(
+  () => ({
+    where: jest.fn(),
+  })
+)
+
 
 describe('CarService', () => {
   let carRepo: CarRepository;
@@ -68,6 +77,32 @@ describe('CarService', () => {
 
     })
 
+  })
+
+  describe('findAllAvailable', () => {
+    it('Should perform find operation', () => {
+      carService.findAllAvailable(/** arguments */)
+      expect(carRepo.find).toBeCalled()
+    })
+
+    it('Should find with appropriate param', () => {
+      const findMethod: jest.Mock<CarRepository> = carRepo.find as any
+      const expectedParam: FindManyOptions<Car> = {
+        join: { alias: 'car', innerJoin: { availability: 'car.availability' } },
+      }
+
+      carService.findAllAvailable()
+
+      const actualParam = findMethod.mock.calls[0][0] as FindManyOptions<Car>
+      const whereParam = (actualParam.where as Function)
+      const mockedQB = new MockQB()
+      whereParam(mockedQB)
+      expect(mockedQB.where).toBeCalled()
+
+      expect(findMethod).toBeCalledWith(
+        expect.objectContaining(expectedParam)
+      )
+    })
   })
 
   describe('add', () => {
