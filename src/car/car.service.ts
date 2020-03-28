@@ -1,5 +1,5 @@
 import { Position, BBox } from "geojson";
-import { InsertResult, Raw, SelectQueryBuilder } from "typeorm";
+import { InsertResult, SelectQueryBuilder } from "typeorm";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 
@@ -48,7 +48,6 @@ export class CarService {
         (qb: SelectQueryBuilder<Car>) => {
           if (whichCar != undefined) {
             qb.where(whichCar)
-
           }
 
           if (whichAvailableOn != undefined) {
@@ -68,7 +67,7 @@ export class CarService {
 
             if (whichAvailableOn.duration != undefined) {
               qb.andWhere(
-                'availability.start_date < :time1::timestamp',
+                'availability.start_date > :time1::timestamp',
                 { time1: whichAvailableOn.duration[0].toISOString() }
               ).andWhere(
                 'availability.end_date < :time2::timestamp',

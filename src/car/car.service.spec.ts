@@ -148,7 +148,7 @@ describe('CarService', () => {
       )
 
       expect(toInjectSQB.andWhere).toHaveBeenCalledWith(
-        'availability.start_date < :time1::timestamp',
+        'availability.start_date > :time1::timestamp',
         { time1: '2020-04-22T18:00:00.000Z' }
       )
 
@@ -190,7 +190,7 @@ describe('CarService', () => {
       )
 
       expect(toInjectSQB.andWhere).toHaveBeenCalledWith(
-        'availability.start_date < :time1::timestamp',
+        'availability.start_date > :time1::timestamp',
         { time1: '2020-03-28T11:00:00.000Z' }
       )
 
