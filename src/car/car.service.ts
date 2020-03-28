@@ -1,4 +1,4 @@
-import { Point, BBox } from "geojson";
+import { Position, BBox } from "geojson";
 import { InsertResult, Raw, SelectQueryBuilder } from "typeorm";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -9,9 +9,9 @@ import { AddCarDto } from "./dto/create-car.dto";
 import { SortbyDto } from "./dto/selection.dto";
 
 export type CarFilter = Partial<Pick<Car, "carType" | "carModel" | "capacity">>
-export type AvailabilityFilter = {
-  duration: [Date, Date],
-  pickupArea: [Point, Point],
+export type CarAvailabilityFilter = {
+  duration?: [Date, Date],
+  pickupArea?: [Position, Position],
 }
 
 
@@ -37,29 +37,46 @@ export class CarService {
   }
 
   async findAllAvailable(
-    where?: CarFilter,
+    whichCar?: CarFilter,
+    whichAvailableOn?: CarAvailabilityFilter,
     sortBy?: SortbyDto,
   ): Promise<Car[]> {
-    const myBound: BBox = [13.5, 100, 13.6, 100.5]
     return this.carRepository.find({
-      join: { alias: 'cars', leftJoinAndSelect: { availability: 'cars.availability' } },
-      loadEagerRelations: true,
+      join: { alias: 'cars', innerJoinAndSelect: { availability: 'cars.availability' } },
+      order: (sortBy != undefined) ? ({ [sortBy.sortby]: sortBy.orderby }) : undefined,
       where:
         (qb: SelectQueryBuilder<Car>) => {
-          qb
-            .where(where)
-            .andWhere(
-              'availability.pickup_location <@ :pickupLocation::box',
-              {
-                'pickupLocation': this.bboxToValue(myBound)
-              }
-            )
-          // .andWhere(
-          //   'availability.startDate = :startDate',
-          //   {
-          //     startDate: new Date('2020-04-23 12:26:48')
-          //   }
-          // )
+          if (whichCar != undefined) {
+            qb.where(whichCar)
+
+          }
+
+          if (whichAvailableOn != undefined) {
+
+            if (whichAvailableOn.pickupArea != undefined) {
+              qb.andWhere(
+                'availability.pickup_location <@ :pickupLocation::box',
+                {
+                  'pickupLocation': this.bboxToValue([
+                    whichAvailableOn.pickupArea[0][0],
+                    whichAvailableOn.pickupArea[0][1],
+                    whichAvailableOn.pickupArea[1][0],
+                    whichAvailableOn.pickupArea[1][1],
+                  ])
+                })
+            }
+
+            if (whichAvailableOn.duration != undefined) {
+              qb.andWhere(
+                'availability.start_date < :time1::timestamp',
+                { time1: whichAvailableOn.duration[0].toISOString() }
+              ).andWhere(
+                'availability.end_date < :time2::timestamp',
+                { time2: whichAvailableOn.duration[1].toISOString() }
+              )
+            }
+
+          }
         }
     });
   }
