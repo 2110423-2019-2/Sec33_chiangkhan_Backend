@@ -23,23 +23,24 @@
 					"urlencoded": [
 						{
 							"key": "username",
-							"value": "hhussy0",
+							"value": "lcroizier2",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "1kvWSXcXcpka",
+							"value": "xeHT5XMyx",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/auth/login",
+					"raw": "localhost:8080/api/auth/login",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "8080",
 					"path": [
+						"api",
 						"auth",
 						"login"
 					]
@@ -106,7 +107,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/car/?sortby=ownerId DESC&capacity=3&carModel=GMC&carType=personal",
+					"raw": "localhost:8080/api/car/?capacity=2&carModel=Volvo&carType=personal&sortby=capacity DESC&duration=[\"2020-04-13T00:00:00.000Z\", \"2020-04-14T23:59:59.999Z\"]&pickupArea=[[13.5, 100], [14, 100.5]]",
 					"host": [
 						"localhost"
 					],
@@ -118,24 +119,34 @@
 					],
 					"query": [
 						{
-							"key": "sortby",
-							"value": "ownerId DESC",
-							"description": "{\"carId\" | \"ownerId\" | \"licenseplate\" | \"capacity\" | \"carModel\" | \"carDescription\" | \"carType\" | \"avgRating\" | \"photoOfCarDocument\"} {ASC|DESC}"
-						},
-						{
 							"key": "capacity",
-							"value": "3",
+							"value": "2",
 							"description": "number"
 						},
 						{
 							"key": "carModel",
-							"value": "GMC",
+							"value": "Volvo",
 							"description": "string"
 						},
 						{
 							"key": "carType",
 							"value": "personal",
 							"description": "string"
+						},
+						{
+							"key": "sortby",
+							"value": "capacity DESC",
+							"description": "{soryby: avgRating, orderby: DESC}"
+						},
+						{
+							"key": "duration",
+							"value": "[\"2020-04-13T00:00:00.000Z\", \"2020-04-14T23:59:59.999Z\"]",
+							"description": "[<StartDate>, <EndDate>]"
+						},
+						{
+							"key": "pickupArea",
+							"value": "[[13.5, 100], [14, 100.5]]",
+							"description": "[<TopLeftPoint>, <BottomRightPoint>]"
 						}
 					]
 				}
@@ -149,7 +160,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n    \"licenseplate\": \"KAWD-758\",\n    \"capacity\": 4,\n    \"carModel\": \"Valvo\",\n    \"carDescription\": \"รถในกิจการพระองค์\",\n    \"photoOfCarDocument\": \"[\\\"https://chaingkhan-static-site.firebaseapp.com/assets/images/car-homepage.jpg\\\"]\"\n  }",
+					"raw": " {\n    \"licenseplate\": \"JIP-767\",\n    \"capacity\": 4,\n    \"carModel\": \"Valvo\",\n    \"carDescription\": \"อุ๋ง ๆ \",\n    \"photoOfCarDocument\": \"[\\\"https://chaingkhan-static-site.firebaseapp.com/assets/images/car-homepage.jpg\\\"]\",\n    \"carType\":\"personal\"\n  }",
 					"options": {
 						"raw": {
 							"language": "json"
