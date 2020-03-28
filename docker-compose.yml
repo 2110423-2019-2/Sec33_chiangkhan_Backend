@@ -37,3 +37,7 @@ services:
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
       - ./postgres-context:/docker-entrypoint-initdb.d
+  frontend:
+    image: theminer3746/se-frontend
+    ports:
+      - 4200:4200
