@@ -28,7 +28,7 @@ describe('CarController', () => {
   describe('getAllCars API', () => {
     it('Should call CarService.findAll', () => {
       carController.getAllCars(new SelectionDto())
-      expect(carService.findAll).toBeCalled()
+      expect(carService.findAllAvailable).toBeCalled()
     })
 
     it('Should call CarService.findAll with correct arguments', () => {
@@ -36,16 +36,23 @@ describe('CarController', () => {
         capacity: 1,
         carModel: "MX250",
         carType: "gpu",
+        duration: [new Date("00:00 AM, 29 Feb 2020 +0000"), new Date("11:59 PM, 29 Feb 2020 +0000")],
+        pickupArea: [[1, 99], [12, 101]],
         _sortby: {
           sortby: "avgRating",
           orderby: "ASC",
         },
       } as SelectionDto)
-      expect(carService.findAll).toBeCalledWith(
+      
+      expect(carService.findAllAvailable).toBeCalledWith(
         expect.objectContaining({
           capacity: 1,
           carModel: "MX250",
           carType: "gpu",
+        }),
+        expect.objectContaining({
+          duration: [new Date("00:00 AM, 29 Feb 2020 +0000"), new Date("11:59 PM, 29 Feb 2020 +0000")],
+          pickupArea: [[1, 99], [12, 101]],
         }),
         {
           sortby: "avgRating",

@@ -1,5 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEnum, IsString, IsOptional, IsNumber, IsInstance } from "class-validator";
+import { IsEnum, IsString, IsOptional, IsNumber, IsArray, ValidateNested, ArrayMinSize, ArrayMaxSize } from "class-validator";
+import { Type } from "class-transformer";
+import { Position } from "geojson";
+
 import { Car } from "../car.entity";
 
 enum orderby {
@@ -50,6 +53,34 @@ export class SelectionDto {
   @IsNumber()
   @IsOptional()
   capacity: number;
+
+  @ApiProperty({
+    type: 'date',
+    isArray: true,
+    description: "Car's availability duration",
+    pattern: "[<StartDate>, <EndDate>]",
+    example: "[2020-03-28T11:00:00.000Z, 2020-03-28T23:00:00.000Z]"
+  })
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @ArrayMinSize(2)
+  @ArrayMaxSize(2)
+  @Type(() => Date)
+  duration: [Date, Date];
+
+  @ApiProperty({
+    type: 'point',
+    isArray: true,
+    description: "Car's availability area",
+    pattern: "[<TopLeftPoint>, <BottomRightPoint>]",
+    example: "[[13.000, 99], [13.050, 101]]"
+  })
+  @IsOptional()
+  @IsArray()
+  @ArrayMinSize(2)
+  @ArrayMaxSize(2)
+  pickupArea: [Position, Position];
 
   @ApiProperty({
     type: 'string',
