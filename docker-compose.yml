@@ -9,6 +9,7 @@ services:
       - 8080:8080
     depends_on:
       - backend
+      - frontend
     network_mode: host
   backend:
     build: .
