@@ -7,6 +7,7 @@ export class CarAvailable {
   @PrimaryGeneratedColumn({
     type: "integer",
   })
+  @Column({ select: false })
   carAvailableId: number;
 
   @ManyToOne(() => Car, {
