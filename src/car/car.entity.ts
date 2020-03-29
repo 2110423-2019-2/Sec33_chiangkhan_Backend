@@ -38,7 +38,8 @@ export class Car {
   ownerId: number;
 
   @Column({
-    type: 'text',
+    type: 'varchar',
+    length: 30,
     nullable: false,
   })
   licenseplate: string;
@@ -50,7 +51,8 @@ export class Car {
   capacity: number;
 
   @Column({
-    type: 'text',
+    type: 'varchar',
+    length: 20,
     nullable: false,
   })
   carModel: string;

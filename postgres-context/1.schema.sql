@@ -4,11 +4,11 @@ CREATE DATABASE chiangkhan;
 CREATE TABLE member (
   user_id SERIAL PRIMARY KEY,
   username TEXT,
-  password TEXT,
-  email TEXT,
+  password VARCHAR(100),
+  email VARCHAR(50),
   address TEXT,
-  phone TEXT,
-  bankaccount TEXT,
+  phone VARCHAR(20),
+  bankaccount VARCHAR(150),
   driving_license TEXT,
   credit_card TEXT
 );
@@ -16,9 +16,9 @@ CREATE TABLE member (
 CREATE TABLE car (
   car_id SERIAL PRIMARY KEY,
   owner_id INT REFERENCES member(user_id),
-  licenseplate TEXT,
+  licenseplate VARCHAR(30),
   capacity INT,
-  car_model TEXT,
+  car_model VARCHAR(20),
   car_description TEXT,
   avg_rating INT,
   photo_of_car_document TEXT,
@@ -36,8 +36,10 @@ CREATE TABLE car_available (
 CREATE TABLE car_reservation (
   car_reservation_id SERIAL PRIMARY KEY,
   car_available_id INT REFERENCES car_available(car_available_id),
+  lessee_id INT REFERENCES member(user_id),
   status TEXT,
   pickup_date DATE,
   return_date DATE,
-  return_location POINT
+  return_location POINT,
+  price INT,
 );

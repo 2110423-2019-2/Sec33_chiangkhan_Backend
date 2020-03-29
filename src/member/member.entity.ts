@@ -30,13 +30,15 @@ export class Member {
   username: string;
 
   @Column({
-    type: 'text',
+    type: 'varchar',
+    length: 100,
     nullable: false,
   })
   password: string;
 
   @Column({
-    type: 'text',
+    type: 'varchar',
+    length: 50,
     nullable: false,
   })
   email: string;
@@ -48,13 +50,15 @@ export class Member {
   address: string;
 
   @Column({
-    type: 'text',
+    type: 'varchar',
+    length: 20,
     nullable: false,
   })
   phone: string;
 
   @Column({
-    type: 'text',
+    type: 'varchar',
+    length: 150,
     nullable: false,
   })
   bankaccount: string;
