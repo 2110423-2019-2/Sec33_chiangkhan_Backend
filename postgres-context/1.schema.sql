@@ -41,5 +41,6 @@ CREATE TABLE car_reservation (
   pickup_date DATE,
   return_date DATE,
   return_location POINT,
-  price INT
+  price INT,
+  agreement TEXT
 );

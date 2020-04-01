@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "t
 import { Car } from "src/car/car.entity";
 import { Point } from "geojson";
 
-@Entity({ name: '' })
+@Entity()
 export class CarAvailable {
   @PrimaryGeneratedColumn({
     type: "integer",
