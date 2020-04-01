@@ -8,6 +8,8 @@ import {
   Query,
   ValidationPipe,
   UsePipes,
+  Param,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { InsertResult } from 'typeorm';
@@ -19,6 +21,7 @@ import { SelectionDto } from './dto/selection.dto';
 import { ParseSortByPipe } from './sortby.pipe';
 import { Car } from './car.entity';
 import { CarService } from './car.service';
+import { CarAgreementService } from 'src/car-agreement/car-agreement.service';
 
 
 @Controller('car')
@@ -27,6 +30,7 @@ import { CarService } from './car.service';
 export class CarController {
   constructor(
     private readonly carService: CarService,
+    private readonly carAgreementService: CarAgreementService,
   ) { }
 
   @Get()
@@ -69,5 +73,10 @@ export class CarController {
     return this.carService.findAllAvailable({
       capacity: 2
     })
+  }
+
+  @Get(':id/agreement')
+  async getCarAgreement(@Param('id', new ParseIntPipe()) id){
+    return this.carAgreementService.findOne(id);
   }
 }
