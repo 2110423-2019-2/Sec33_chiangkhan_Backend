@@ -18,7 +18,7 @@ export class CarAgreement {
         name: 'agreement_for_reservation',
         referencedColumnName: 'carId',
     })
-    relatedReservation: Car
+    relatedCarId: Car
 
     @Column({
         type: "varchar",
