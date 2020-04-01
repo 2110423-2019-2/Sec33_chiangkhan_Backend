@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
-import { CarReservation } from "src/car-reservation/car-reservation.entity";
+import { Car } from "src/car/car.entity";
 
 @Entity()
 export class CarAgreement {
@@ -9,16 +9,16 @@ export class CarAgreement {
     @Column()
     carAgreementId: number;
 
-    @OneToOne(() => CarReservation, {
+    @OneToOne(() => Car, {
         primary: true,
         nullable: false,
         lazy: false,
     })
     @JoinColumn({
         name: 'agreement_for_reservation',
-        referencedColumnName: 'carReservationId',
+        referencedColumnName: 'carId',
     })
-    relatedReservation: CarReservation
+    relatedReservation: Car
 
     @Column({
         type: "varchar",
