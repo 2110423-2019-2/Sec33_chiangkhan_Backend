@@ -9,7 +9,7 @@ services:
       - 8080:8080
     depends_on:
       - backend
-      - frontend
+      # - frontend
     network_mode: host
   backend:
     build: .
@@ -38,7 +38,7 @@ services:
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
       - ./postgres-context:/docker-entrypoint-initdb.d
-  frontend:
-    image: theminer3746/se-frontend
-    ports:
-      - 4200:4200
+  # frontend:
+  #   image: theminer3746/se-frontend
+  #   ports:
+  #     - 4200:4200
