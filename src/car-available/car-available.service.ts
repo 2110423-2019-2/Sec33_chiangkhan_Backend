@@ -4,6 +4,8 @@ import { FindConditions } from "typeorm";
 
 import { CarAvailable } from "./car-available.entity";
 import { CarAvailableRepository } from "./car-available.repository";
+import { AddCarAvailabilityDto } from "./dto/add-availability.dto";
+import { InsertResult } from "typeorm";
 
 @Injectable()
 export class CarAvailableService {
@@ -25,4 +27,14 @@ export class CarAvailableService {
       }
     })
   }
+
+  async AddAvailability(user: number, dto: AddCarAvailabilityDto) : Promise<InsertResult> {
+    const newCarAvailability: CarAvailable = {
+      ...dto,
+      carAvailableId: null,
+      car: null,
+    }
+    return this.carAvaiRepository.insert(newCarAvailability);
+  }
+  
 }
