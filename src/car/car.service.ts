@@ -90,8 +90,13 @@ export class CarService {
       avgRating: 0,
       owner: null,
       carId: null,
+      isInUse: false,
       ownerId,
     }
     return this.carRepository.insert(newCar)
+  }
+
+  async toggleIsInUse(carId: number, state: boolean) {
+    return this.carRepository.update({ carId }, { isInUse: state })
   }
 }

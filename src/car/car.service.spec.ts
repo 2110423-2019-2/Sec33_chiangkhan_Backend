@@ -1,5 +1,6 @@
 import { Test } from "@nestjs/testing";
-import { FindManyOptions, SelectQueryBuilder } from "typeorm";
+import { FindManyOptions, SelectQueryBuilder, FindConditions } from "typeorm";
+import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
 
 import { AddCarDto } from "./dto/create-car.dto";
 import { SortbyDto } from "./dto/selection.dto";
@@ -284,6 +285,32 @@ describe('CarService', () => {
           ownerId: 125,
           avgRating: 0,
         })
+      )
+
+    })
+  })
+
+  describe('toggleIsInUse()', () => {
+    it('Should perform update operation', () => {
+      carService.toggleIsInUse(1, true)
+
+      expect(carRepo.update).toBeCalled()
+    })
+
+    it('Should update only isInUse field with T/F value', () => {
+
+      const expectedUpdateCriteria: FindConditions<Car> = {
+        carId: 1
+      }
+      const expectedUpdateEntity: QueryDeepPartialEntity<Car> = {
+        isInUse: true
+      }
+
+      carService.toggleIsInUse(1, true)
+
+      expect(carRepo.update).toBeCalledWith(
+        expect.objectContaining(expectedUpdateCriteria),
+        expect.objectContaining(expectedUpdateEntity),
       )
 
     })
