@@ -14,6 +14,7 @@ export class SortbyDto {
   @ApiProperty({
     type: "string",
     description: "Sort column name",
+    required: false
   })
   @IsString()
   sortby: keyof Car;
@@ -21,7 +22,8 @@ export class SortbyDto {
   @ApiProperty({
     type: 'enum',
     enum: ["ASC", "DESC"],
-    description: "Sort column name"
+    description: "Sort column name",
+    required: false
   })
   @IsEnum(orderby)
   orderby: string;
@@ -33,6 +35,7 @@ export class SelectionDto {
   @ApiProperty({
     type: "string",
     description: "Car's type",
+    required: false
   })
   @IsString()
   @IsOptional()
@@ -41,6 +44,7 @@ export class SelectionDto {
   @ApiProperty({
     type: "string",
     description: "Car's model",
+    required: false
   })
   @IsString()
   @IsOptional()
@@ -49,6 +53,7 @@ export class SelectionDto {
   @ApiProperty({
     type: "number",
     description: "Car's capacity",
+    required: false
   })
   @IsNumber()
   @IsOptional()
@@ -59,7 +64,8 @@ export class SelectionDto {
     isArray: true,
     description: "Car's availability duration",
     pattern: "[<StartDate>, <EndDate>]",
-    example: "[2020-03-28T11:00:00.000Z, 2020-03-28T23:00:00.000Z]"
+    example: ["2020-03-28T11:00:00.000Z", "2020-03-28T23:00:00.000Z"],
+    required: false
   })
   @IsOptional()
   @IsArray()
@@ -74,7 +80,8 @@ export class SelectionDto {
     isArray: true,
     description: "Car's availability area",
     pattern: "[<TopLeftPoint>, <BottomRightPoint>]",
-    example: "[[13.000, 99], [13.050, 101]]"
+    example: [[13.000, 99], [13.050, 101]],
+    required: false
   })
   @IsOptional()
   @IsArray()
@@ -86,7 +93,8 @@ export class SelectionDto {
     type: 'string',
     description: "Sort options",
     pattern: "{<columnName>} {ASC|DESC}",
-    example: "avgRating ASC"
+    example: "avgRating ASC",
+    required: false
   })
   @IsOptional()
   sortby: string;
