@@ -6,7 +6,9 @@ import { CarReservation } from "./car-reservation.entity";
 
 @Injectable()
 export class CarReservationService extends TypeOrmCrudService<CarReservation> {
-  constructor(@InjectRepository(CarReservation) carReservationRepository) {
-    super(carReservationRepository);
+  constructor(
+    @InjectRepository(CarReservation) repository
+  ) {
+    super(repository);
   }
 }

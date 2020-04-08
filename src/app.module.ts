@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { getTypeORMConfig } from './config/typeorm.config';
 import { CarModule } from './car/car.module';
 import { AuthModule } from './member/auth.module';
+import { CarReservationModule } from './car-reservation/car-reservation.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { AuthModule } from './member/auth.module';
       ...getTypeORMConfig()
     }),
     AuthModule,
-    CarModule
+    CarModule,
+    CarReservationModule
   ],
   controllers: [AppController],
   providers: [AppService],
