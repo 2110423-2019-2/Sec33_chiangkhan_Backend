@@ -27,7 +27,6 @@ import { UserController } from './users.controller';
   providers: [
     MemberService,
     JwtStrategy,
-    // CookieClearerInterceptor,
     CookieInterceptor,
     UserInterceptor,
   ],
