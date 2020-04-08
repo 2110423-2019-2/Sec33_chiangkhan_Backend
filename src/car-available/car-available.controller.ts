@@ -18,12 +18,12 @@ export class carAvailableController {
         private readonly carAvailableService : CarAvailableService,
     ) { }
 
-    // @Post()
-    // addAvailability(
-    //     @Body('_user') user: number, 
-    //     @Body(new ValidationPipe()) dto: AddCarAvailabilityDto
-    //     ): Promise<InsertResult> {
-    //         return this.carAvailableService.AddAvailability(user, dto);
-    //     }
+    @Post()
+    addAvailability(
+        @Body('_user') user: number, 
+        @Body(new ValidationPipe()) dto: AddCarAvailabilityDto
+        ): Promise<InsertResult> {
+            return this.carAvailableService.AddAvailability(user, dto);
+        }
 
 }
