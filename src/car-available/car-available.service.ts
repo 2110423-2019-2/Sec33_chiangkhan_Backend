@@ -1,6 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { CarAvailable } from "./car-available.entity";
 import { InjectRepository } from "@nestjs/typeorm";
+import { FindConditions } from "typeorm";
+
+import { CarAvailable } from "./car-available.entity";
 import { CarAvailableRepository } from "./car-available.repository";
 
 @Injectable()
@@ -10,9 +12,17 @@ export class CarAvailableService {
     private readonly carAvaiRepository: CarAvailableRepository,
   ) { }
 
-  async findAll(
+  async findAll(query?: FindConditions<CarAvailable>): Promise<CarAvailable[]> {
+    return this.carAvaiRepository.find({
+      where: query
+    })
+  }
 
-  ): Promise<CarAvailable[]> {
-    return this.carAvaiRepository.find()
+  async fetch(id: number): Promise<CarAvailable> {
+    return this.carAvaiRepository.findOne({
+      where: {
+        carAvailableId: id
+      }
+    })
   }
 }
