@@ -8,7 +8,7 @@ export interface JWTRepresentation {
 @Entity({ name: 'member' })
 export class Member {
   @PrimaryGeneratedColumn({
-    type: "integer",
+    type: "int",
   })
   userId: number;
 
@@ -75,4 +75,9 @@ export class Member {
   })
   creditCard: string;
 
+  @Column({
+    type: 'int',
+    nullable: false
+  })
+  cash: number;
 }

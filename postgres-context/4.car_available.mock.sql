@@ -1,7 +1,9 @@
 \c chiangkhan
 ALTER TABLE car_available 
 ADD COLUMN pickup_location_long real,
-ADD COLUMN pickup_location_lat real;
+ADD COLUMN pickup_location_lat real,
+ALTER COLUMN price SET DEFAULT 900,
+ALTER COLUMN agreement SET DEFAULT 'DO NOT STEAL MY CAR';
 
 insert into car_available (car_available_id, car_id, start_date, end_date, pickup_location_long, pickup_location_lat, pickup_location) values (1, 27, '2020-04-12 04:15:30', '2020-04-12 07:53:29', 14.049065, 100.718377, '(14.049065, 100.718377)');
 insert into car_available (car_available_id, car_id, start_date, end_date, pickup_location_long, pickup_location_lat, pickup_location) values (2, 22, '2020-04-12 04:21:18', '2020-04-12 08:56:52', 14.028563, 100.940174, '(14.028563, 100.940174)');
@@ -1006,4 +1008,6 @@ insert into car_available (car_available_id, car_id, start_date, end_date, picku
 
 ALTER TABLE car_available 
 DROP COLUMN pickup_location_long,
-DROP COLUMN pickup_location_lat;
+DROP COLUMN pickup_location_lat,
+ALTER COLUMN price DROP DEFAULT,
+ALTER COLUMN agreement DROP DEFAULT;

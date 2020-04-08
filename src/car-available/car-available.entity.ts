@@ -5,10 +5,15 @@ import { Point } from "geojson";
 @Entity()
 export class CarAvailable {
   @PrimaryGeneratedColumn({
-    type: "integer",
+    type: "int",
   })
-  @Column({ select: false })
   carAvailableId: number;
+
+  @Column({
+    nullable: false,
+    name: 'car_id'
+  })
+  carId: number;
 
   @ManyToOne(() => Car, {
     primary: true,
@@ -38,4 +43,16 @@ export class CarAvailable {
     nullable: false
   })
   endDate: Date
+
+  @Column({
+    type: 'int',
+    nullable: false
+  })
+  price: number
+
+  @Column({
+    type: 'text',
+    nullable: false
+  })
+  agreement: string
 }

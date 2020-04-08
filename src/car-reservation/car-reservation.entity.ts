@@ -1,26 +1,40 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToOne } from "typeorm";
-import { CarAvailable } from "src/car-available/car-available.entity";
 import { Point } from "geojson";
+
+import { CarAvailable } from "src/car-available/car-available.entity";
 import { Member } from "src/member/member.entity";
 
 @Entity()
 export class CarReservation {
   @PrimaryGeneratedColumn({
-    type: "integer",
+    type: "int",
   })
-  @Column({ select: false })
   carReservationId: number;
 
-  @ManyToOne(() => CarAvailable, {
-    primary: true,
+  @Column({
     nullable: false,
-    lazy: false
+    name: 'car_available_id'
   })
+  carAvailableId: number;
+
+  @ManyToOne(
+    () => CarAvailable,
+    {
+      primary: true,
+      nullable: false,
+      lazy: false
+    })
   @JoinColumn({
     name: 'car_available_id',
     referencedColumnName: 'carAvailableId',
   })
   relatedCarAvailable: CarAvailable;
+
+  @Column({
+    type: 'int',
+    nullable: false,
+  })
+  lesseeId: number
 
   @OneToOne(() => Member, {
     primary: true,
@@ -53,20 +67,9 @@ export class CarReservation {
 
   @Column({
     type: 'enum',
-    enum: ["RESERVED", "PICKED", "RETURNED", "CANCELED"],
+    enum: ["RESERVED", "PICKED", "RETURNED", "CANCELLED"],
     nullable: false
   })
   status: string
 
-  @Column({
-    type: 'int',
-    nullable: false
-  })
-  price: number
-
-  @Column({
-    type: 'string',
-    nullable: false
-  })
-  agreement: string
 }

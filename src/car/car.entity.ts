@@ -5,7 +5,7 @@ import { CarAvailable } from "src/car-available/car-available.entity";
 @Entity({ name: 'car' })
 export class Car {
   @PrimaryGeneratedColumn({
-    type: "integer",
+    type: "int",
   })
   carId: number;
 
@@ -81,4 +81,10 @@ export class Car {
   })
   photoOfCarDocument: string;
 
+  @Column({
+    type: 'boolean',
+    default: false,
+    nullable: false,
+  })
+  isInUse: boolean;
 }
