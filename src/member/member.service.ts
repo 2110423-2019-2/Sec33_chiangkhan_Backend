@@ -1,12 +1,11 @@
-import { Injectable, HttpException, ForbiddenException, HttpStatus, Scope } from '@nestjs/common';
+import { Injectable, Scope } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Member, JWTRepresentation } from './member.entity';
 import { MemberRepository } from './member.repository';
 import { sha256, Hasher } from "js-sha256";
 import { CreateMemberDto } from './dto/create-member.dto';
-import { InsertResult } from 'typeorm';
-import { create } from 'domain';
+import { InsertResult, MoreThanOrEqual } from 'typeorm';
 
 @Injectable(
   { scope: Scope.REQUEST }
@@ -47,5 +46,34 @@ export class MemberService {
     createMemberDto: CreateMemberDto
   ): Promise<InsertResult> {
     return this.memberRepository.insert(createMemberDto)
+  }
+
+  async purchase(
+    userId: number,
+    amount: number
+  ) {
+
+    let memberInfo: Member;
+
+    try {
+      memberInfo = await this.memberRepository.findOneOrFail({
+        where: {
+          userId,
+          cash: MoreThanOrEqual(amount)
+        }
+      })
+    } catch (error) {
+      throw new Error(error)
+    }
+
+    return await this.memberRepository.update(
+      {
+        userId,
+        cash: MoreThanOrEqual(amount)
+      },
+      {
+        cash: memberInfo.cash - amount
+      }
+    )
   }
 }
