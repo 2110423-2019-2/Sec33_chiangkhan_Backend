@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d80c1254-dbe4-441f-9110-22cf6c5d7659",
+		"_postman_id": "f498404e-ffb0-41be-91d4-f61d1b76b97e",
 		"name": "Software Engineering",
 		"description": "Describe real-world API usage",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -177,6 +177,81 @@
 						"api",
 						"car",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reserve car",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"carAvailableId\": 2,\n\t\"returnLocation\": \"(14.028563, 100.940174)\",\n\t\"pickupDate\": \"2020-04-12 04:21:18\",\n\t\"returnDate\": \"2020-04-12 08:56:52\",\n\t\"status\": \"RESERVED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/car-reservation/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"car-reservation",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Reservation",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"status\": \"CANCELLED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/car-reservation/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"car-reservation",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get car reserve",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/car-reservation/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"car-reservation",
+						"2"
 					]
 				}
 			},
