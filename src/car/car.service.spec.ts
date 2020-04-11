@@ -63,6 +63,7 @@ describe('CarService', () => {
           }
         })
       )
+
     })
 
     it('Should call CarRepository.find with correct sortBy (2nd) arguments', () => {
