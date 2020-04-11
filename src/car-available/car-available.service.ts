@@ -33,9 +33,10 @@ export class CarAvailableService {
       ...dto,
       carAvailableId: null,
       car: null,
-      price: 900,
-      agreement: 'DO NOT STEAL MY CAR',
+      // price: 900,
+      // agreement: 'DO NOT STEAL MY CAR',
     }
+    console.log(newCarAvailability);
     return this.carAvaiRepository.insert(newCarAvailability);
   }
   
