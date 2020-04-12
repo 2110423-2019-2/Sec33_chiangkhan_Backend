@@ -311,6 +311,36 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "updateMember",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"striasdng\",\n  \"password\": \"strasding\",\n  \"email\": \"strasding\",\n  \"phone_num\": \"striasdng\",\n  \"bank_account\": \"strasding\",\n  \"bank_account_branch\": \"asdstring\",\n  \"credit_card_number\": \"striasdng\",\n  \"credit_card_expiry\": \"stadring\",\n  \"credit_card_security\": \"striasdng\",\n  \"driving_license\": \"strasding\",\n  \"address\": \"stasdring\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/member/11/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"member",
+						"11",
+						"update"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
