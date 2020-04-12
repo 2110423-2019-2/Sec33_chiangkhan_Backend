@@ -2,20 +2,13 @@ import { IsString, IsEnum, IsDateString, Matches, IsOptional, IsArray } from 'cl
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
 export class CreateMemberDto{
-    
-    @ApiProperty({
-        type: "string",
-        description: "firstname",
-    })
-    @IsString()
-    firstname: string;
 
     @ApiProperty({
         type: "string",
-        description: "lastname",
+        description: "name",
     })
     @IsString()
-    lastname: string;
+    name: string;
 
     @ApiProperty({
         type: "string",

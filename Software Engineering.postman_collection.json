@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f498404e-ffb0-41be-91d4-f61d1b76b97e",
+		"_postman_id": "f07aabab-6c67-4780-a727-9d903517849b",
 		"name": "Software Engineering",
 		"description": "Describe real-world API usage",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -244,14 +244,69 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/car-reservation/2",
+					"raw": "localhost:3000/car-reservation/1",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"car-reservation",
-						"2"
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add car avilable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"carId\": 1,\n  \"pickupLocation\": \"(14.0490115, 100.718377)\",\n  \"startDate\": \"2021-08-12 04:21:18\",\n  \"endDate\": \"2021-08-13 04:21:18\",\n  \"price\": 500,\n  \"agreement\": \"You have to return the car in the afternoon\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/carAvailable",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carAvailable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"string asakddk\",\n  \"username\": \"string1234\",\n  \"password\": \"string1234\",\n  \"email\": \"stringadsaas\",\n  \"phone_num\": \"strisadng\",\n  \"bank_account\": \"striadsang\",\n  \"bank_account_branch\": \"sadstring\",\n  \"credit_card_number\": \"striadsasdng\",\n  \"credit_card_expiry\": \"strinadsg\",\n  \"credit_card_security\": \"striadng\",\n  \"driving_license\": \"striasdng\",\n  \"address\": \"striasdng\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
 					]
 				}
 			},

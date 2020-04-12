@@ -76,4 +76,30 @@ export class MemberService {
       }
     )
   }
+
+  // async updateMember(
+  //   userId: number
+  // ) {
+
+  //   let memberInfo: Member;
+
+  //   try {
+  //     memberInfo = await this.memberRepository.findOneOrFail({
+  //       where: {
+  //         userId,
+  //       }
+  //     })
+  //   } catch (error) {
+  //     throw new Error(error)
+  //   }
+  //   return await this.memberRepository.update(
+  //     {
+  //       userId,
+  //       cash: MoreThanOrEqual(amount)
+  //     },
+  //     {
+  //       cash: memberInfo.cash - amount
+  //     }
+  //   )
+  // }
 }

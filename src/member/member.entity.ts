@@ -27,6 +27,12 @@ export class Member {
     type: 'text',
     nullable: false,
   })
+  name: string;
+
+  @Column({
+    type: 'text',
+    nullable: false,
+  })
   username: string;
 
   @Column({
@@ -54,26 +60,45 @@ export class Member {
     length: 20,
     nullable: false,
   })
-  phone: string;
+  phone_num: string;
 
   @Column({
     type: 'varchar',
     length: 150,
     nullable: false,
   })
-  bankaccount: string;
+  bank_account: string;
+
+  @Column({
+    type: 'varchar',
+    length: 150,
+    nullable: false,
+  })
+  bank_account_branch: string;
 
   @Column({
     type: 'text',
     nullable: false,
   })
-  drivingLicense: string;
+  driving_license: string;
 
   @Column({
     type: 'text',
     nullable: false,
   })
-  creditCard: string;
+  credit_card_number: string;
+
+  @Column({
+    type: 'text',
+    nullable: false,
+  })
+  credit_card_expiry: string;
+
+  @Column({
+    type: 'text',
+    nullable: false,
+  })
+  credit_card_security: string;
 
   @Column({
     type: 'int',
