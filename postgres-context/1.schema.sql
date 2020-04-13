@@ -3,14 +3,18 @@ CREATE DATABASE chiangkhan;
 
 CREATE TABLE member (
   user_id SERIAL PRIMARY KEY,
+  name TEXT,
   username TEXT,
   password VARCHAR(100),
   email VARCHAR(50),
   address TEXT,
-  phone VARCHAR(20),
-  bankaccount VARCHAR(150),
+  phone_num VARCHAR(20),
+  bank_account VARCHAR(150),
+  bank_account_branch VARCHAR(150),
   driving_license TEXT,
-  credit_card TEXT,
+  credit_card_number TEXT,
+  credit_card_security TEXT,
+  credit_card_expiry TEXT,
   cash INT DEFAULT 1000
 );
 

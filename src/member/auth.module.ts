@@ -9,6 +9,7 @@ import { Member } from './member.entity';
 import { JwtStrategy } from './jwt.strategy';
 import { UserInterceptor } from 'src/interceptor/user.interceptor';
 import { UserController } from './users.controller';
+import { MemberController } from './member.controller';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { UserController } from './users.controller';
       Member,
     ])
   ],
-  controllers: [AuthenticationController, UserController],
+  controllers: [AuthenticationController, UserController, MemberController],
   providers: [
     MemberService,
     JwtStrategy,

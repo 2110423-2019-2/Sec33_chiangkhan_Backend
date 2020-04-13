@@ -1,7 +1,7 @@
 import { IsString, IsEnum, IsDateString, Matches, IsOptional, IsArray } from 'class-validator'
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
-export class CreateMemberDto{
+export class UpdateMemberDto{
 
     @ApiProperty({
         type: "string",
@@ -9,13 +9,6 @@ export class CreateMemberDto{
     })
     @IsString()
     name: string;
-
-    @ApiProperty({
-        type: "string",
-        description: "username",
-    })
-    @IsString()
-    username: string;
 
     @ApiProperty({
         type: "string",

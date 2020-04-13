@@ -31,8 +31,7 @@ describe('UserController', () => {
 
         it('Should call MemberService.registerService with correct arguments', () => {
             let testData = {
-                firstname: "Test",
-                lastname: "User",
+                name: "UserTest",
                 username: "Lorem",
                 password: "password",
                 email: "me@example.com",
