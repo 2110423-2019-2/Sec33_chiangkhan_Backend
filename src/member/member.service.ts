@@ -94,5 +94,9 @@ export class MemberService {
       {userId},updateMemberDto
     )
   }
+
+  async getMember(userId: number) {
+    return this.memberRepository.findOne(userId);
+  }
   
 }

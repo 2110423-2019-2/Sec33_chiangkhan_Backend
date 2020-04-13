@@ -319,7 +319,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"striasdng\",\n  \"password\": \"strasding\",\n  \"email\": \"strasding\",\n  \"phone_num\": \"striasdng\",\n  \"bank_account\": \"strasding\",\n  \"bank_account_branch\": \"asdstring\",\n  \"credit_card_number\": \"striasdng\",\n  \"credit_card_expiry\": \"stadring\",\n  \"credit_card_security\": \"striasdng\",\n  \"driving_license\": \"strasding\",\n  \"address\": \"stasdring\"\n}",
+					"raw": "{\n  \"name\": \"striasdng\",\n  \"password\": \"xeHT5XMyx\",\n  \"email\": \"strasding\",\n  \"phone_num\": \"striasdng\",\n  \"bank_account\": \"strasding\",\n  \"bank_account_branch\": \"asdstring\",\n  \"credit_card_number\": \"striasdng\",\n  \"credit_card_expiry\": \"stadring\",\n  \"credit_card_security\": \"striasdng\",\n  \"driving_license\": \"strasding\",\n  \"address\": \"stasdring\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -327,7 +327,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/member/11/update",
+					"raw": "localhost:8080/api/member/update",
 					"host": [
 						"localhost"
 					],
@@ -335,8 +335,27 @@
 					"path": [
 						"api",
 						"member",
-						"11",
 						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMember",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/member/info",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"member",
+						"info"
 					]
 				}
 			},
