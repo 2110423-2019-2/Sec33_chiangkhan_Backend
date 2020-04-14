@@ -244,12 +244,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/car-reservation/1",
+					"raw": "localhost:8080/api/car-reservation/1",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "8080",
 					"path": [
+						"api",
 						"car-reservation",
 						"1"
 					]
@@ -356,6 +357,26 @@
 						"api",
 						"member",
 						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getmycar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/car/mycar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"car",
+						"mycar"
 					]
 				}
 			},

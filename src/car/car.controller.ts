@@ -8,6 +8,7 @@ import {
   Query,
   ValidationPipe,
   UsePipes,
+  Request,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { InsertResult } from 'typeorm';
@@ -69,4 +70,10 @@ export class CarController {
       capacity: 2
     })
   }
+
+  @UseGuards(AuthGuard('jwt'))
+    @Get('mycar')
+    async getMyCar(@Request() req): Promise<Car[]> {
+        return this.carService.findMyCar(req.user.id);
+    }
 }

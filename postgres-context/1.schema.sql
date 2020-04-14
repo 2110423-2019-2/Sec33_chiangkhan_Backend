@@ -4,7 +4,7 @@ CREATE DATABASE chiangkhan;
 CREATE TABLE member (
   user_id SERIAL PRIMARY KEY,
   name TEXT,
-  username TEXT,
+  username TEXT UNIQUE,
   password VARCHAR(100),
   email VARCHAR(50),
   address TEXT,

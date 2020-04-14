@@ -32,5 +32,6 @@ export class MemberController {
     async getmember(@Request() req): Promise<any> {
         console.log(req.user.id);
         return this.memberService.getMember(req.user.id);
-    }    
+    }
+    
 }

@@ -99,4 +99,8 @@ export class CarService {
   async toggleIsInUse(carId: number, state: boolean) {
     return this.carRepository.update({ carId }, { isInUse: state })
   }
+
+  async findMyCar(ownerId: number): Promise<Car[]> {
+    return this.carRepository.find({where:{ownerId}});
+  }
 }
