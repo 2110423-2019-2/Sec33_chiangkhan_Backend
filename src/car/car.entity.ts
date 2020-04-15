@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToMany, ManyToOne } from "typeorm";
 import { Member } from "src/member/member.entity";
 import { CarAvailable } from "src/car-available/car-available.entity";
+import { Review } from "src/review/review.entity";
 
 @Entity({ name: 'car' })
 export class Car {
@@ -30,6 +31,17 @@ export class Car {
     }
   )
   availability?: CarAvailable
+
+  @OneToMany(
+    () => Review,
+    review => review.car,
+    {
+      eager: false,
+      lazy: false,
+      nullable: true,
+    }
+  )
+  review?: Review
 
   @Column({
     type: 'integer',

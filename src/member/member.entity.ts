@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, OneToMany } from "typeorm";
 import { Car } from "src/car/car.entity";
+import { Review } from "src/review/review.entity";
 
 export interface JWTRepresentation {
   id: number,
@@ -22,6 +23,17 @@ export class Member {
     }
   )
   ownedCar?: Promise<Car>
+
+  @OneToMany(
+    () => Review,
+    review => review.owner,
+    {
+      lazy: true,
+      eager:false,
+      nullable: true
+    }
+  )
+  ownedReview?: Promise<Review>
 
   @Column({
     type: 'text',

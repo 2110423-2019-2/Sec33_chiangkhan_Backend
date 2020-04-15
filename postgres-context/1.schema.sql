@@ -50,3 +50,11 @@ CREATE TABLE car_reservation (
   return_date TIMESTAMP,
   return_location POINT
 );
+
+CREATE TABLE review (
+  review_id SERIAL PRIMARY KEY,
+  owner_id INT REFERENCES member(user_id) NOT NULL,
+  car_id INT REFERENCES car(car_id) NOT NULL,
+  comment TEXT,
+  rating INT
+);

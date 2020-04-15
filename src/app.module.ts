@@ -7,6 +7,7 @@ import { CarModule } from './car/car.module';
 import { AuthModule } from './member/auth.module';
 import { CarReservationModule } from './car-reservation/car-reservation.module';
 import { CarAvailableModule } from './car-available/car-available.module';
+import { ReviewModule } from './review/review.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { CarAvailableModule } from './car-available/car-available.module';
     AuthModule,
     CarModule,
     CarReservationModule,
-    CarAvailableModule
+    CarAvailableModule,
+    ReviewModule
   ],
   controllers: [AppController],
   providers: [AppService],

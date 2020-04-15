@@ -26,12 +26,6 @@ export class CarAvailable {
   })
   car: Car;
 
-  // @Column({
-  //   type: 'int',
-  //   nullable: false,
-  // })
-  // carId: number;
-
   @Column({
     type: 'point',
     nullable: false,
