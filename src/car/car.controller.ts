@@ -76,4 +76,10 @@ export class CarController {
     async getMyCar(@Request() req): Promise<Car[]> {
         return this.carService.findMyCar(req.user.id);
     }
+  
+  @UseGuards(AuthGuard('jwt'))
+  @Get('MyDeal') MyAvailable(@Request() req): Promise<any>{
+        return this.carService.findMyAvailable(req.user.id);
+  }
+
 }

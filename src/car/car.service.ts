@@ -103,4 +103,8 @@ export class CarService {
   async findMyCar(ownerId: number): Promise<Car[]> {
     return this.carRepository.find({where:{ownerId}});
   }
+
+  async findMyAvailable(ownerId: number) {
+    return this.carRepository.find({where:{ownerId},join: { alias: 'cars', innerJoinAndSelect: { availability: 'cars.availability' } }});
+  }
 }
