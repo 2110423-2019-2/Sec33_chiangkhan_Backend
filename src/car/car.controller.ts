@@ -9,6 +9,7 @@ import {
   ValidationPipe,
   UsePipes,
   Request,
+  Param,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { InsertResult } from 'typeorm';
@@ -80,6 +81,10 @@ export class CarController {
   @UseGuards(AuthGuard('jwt'))
   @Get('MyDeal') MyAvailable(@Request() req): Promise<any>{
         return this.carService.findMyAvailable(req.user.id);
+  }
+
+  @Get(':carId/carReview') findreview(@Param('carId') carId){
+    return this.carService.getreview(carId);
   }
 
 }

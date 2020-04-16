@@ -107,4 +107,8 @@ export class CarService {
   async findMyAvailable(ownerId: number) {
     return this.carRepository.find({where:{ownerId},join: { alias: 'cars', innerJoinAndSelect: { availability: 'cars.availability' } }});
   }
+
+  async getreview(carId: number) {
+    return this.carRepository.find({where:{carId},join: {alias:'cars', innerJoinAndSelect:{ review: 'cars.review'}}});
+  }
 }

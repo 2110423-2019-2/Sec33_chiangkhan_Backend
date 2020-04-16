@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { FindConditions } from "typeorm";
+import { FindConditions, DeleteResult } from "typeorm";
 
 import { CarAvailable } from "./car-available.entity";
 import { CarAvailableRepository } from "./car-available.repository";
@@ -38,6 +38,11 @@ export class CarAvailableService {
     }
     console.log(newCarAvailability);
     return this.carAvaiRepository.insert(newCarAvailability);
+  }
+
+  async deleteAvailability(id: number) : Promise<DeleteResult>{
+    console.log(this.carAvaiRepository.findOneOrFail(id));
+    return this.carAvaiRepository.delete(id);
   }
   
 }

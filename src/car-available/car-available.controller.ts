@@ -2,10 +2,12 @@ import {
     UseInterceptors,
     Body,
     ValidationPipe,
+    Delete,
+    Param,
   } from '@nestjs/common';
 import { Controller, UseGuards, Post } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
-import { InsertResult } from "typeorm";
+import { InsertResult, DeleteResult } from "typeorm";
 import { CarAvailableService } from 'src/car-available/car-available.service';
 import { AddCarAvailabilityDto } from "./dto/add-availability.dto";
 import { UserInterceptor } from 'src/interceptor/user.interceptor';
@@ -25,5 +27,10 @@ export class carAvailableController {
         ): Promise<InsertResult> {
             return this.carAvailableService.AddAvailability(user, dto);
         }
+    
+    @Delete(':id')
+    deleteAailability(@Param('id') id): Promise<DeleteResult>{
+        return this.deleteAailability(id);
+    }
 
 }
