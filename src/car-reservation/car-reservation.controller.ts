@@ -31,7 +31,7 @@ import { CarReservation } from "./car-reservation.entity";
     }
   },
   query: {
-    allow: ["carReservationId", "pickupDate", "returnDate", "status", "price"],
+    //allow: ["carReservationId", "pickupDate", "returnDate", "status", "price"],
     join: {
       lessee: {
         eager: true
@@ -90,7 +90,7 @@ export class CarReservationController implements CrudController<CarReservation>{
 
     try {
       const { price, startDate, endDate } = await this.carAvailabilityService.fetch(carAvailableId)
-
+      
       if ((+pickupDate >= +startDate) && (+returnDate <= +endDate)) {
         await this.memberService.purchase(lesseeId, price)
         return await this.base.createOneBase(

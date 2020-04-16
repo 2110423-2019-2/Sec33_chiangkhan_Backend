@@ -30,7 +30,7 @@ export class carAvailableController {
     
     @Delete(':id')
     deleteAailability(@Param('id') id): Promise<DeleteResult>{
-        return this.deleteAailability(id);
+        return this.carAvailableService.deleteAvailability(id);
     }
 
 }
