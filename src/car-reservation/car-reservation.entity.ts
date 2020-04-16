@@ -67,7 +67,7 @@ export class CarReservation {
 
   @Column({
     type: 'enum',
-    enum: ["RESERVED", "PICKED", "RETURNED", "CANCELED"],
+    enum: ["RESERVED", "PICKED", "RETURNED", "CANCELED","PENDING"],
     nullable: false
   })
   status: string

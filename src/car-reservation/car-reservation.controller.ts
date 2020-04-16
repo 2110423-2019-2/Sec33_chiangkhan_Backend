@@ -90,9 +90,14 @@ export class CarReservationController implements CrudController<CarReservation>{
 
     try {
       const { price, startDate, endDate } = await this.carAvailabilityService.fetch(carAvailableId)
-      
+
+      let hours = Math.floor((returnDate.getTime()-pickupDate.getTime())/1000/60/60);
+      console.log(hours);
+      const totalPrice = price * hours;
+      console.log(totalPrice)
+
       if ((+pickupDate >= +startDate) && (+returnDate <= +endDate)) {
-        await this.memberService.purchase(lesseeId, price)
+        await this.memberService.purchase(lesseeId, totalPrice)
         return await this.base.createOneBase(
           req,
           {

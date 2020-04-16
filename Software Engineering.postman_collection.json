@@ -189,7 +189,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"carAvailableId\": 2,\n\t\"returnLocation\": \"(14.028563, 100.940174)\",\n\t\"pickupDate\": \"2020-04-12 04:21:18\",\n\t\"returnDate\": \"2020-04-12 08:56:52\",\n\t\"status\": \"RESERVED\"\n}",
+					"raw": "{\n\t\"carAvailableId\": 2,\n\t\"returnLocation\": \"(14.028563, 100.940174)\",\n\t\"pickupDate\": \"2020-04-12 04:21:18\",\n\t\"returnDate\": \"2020-04-12 08:56:52\",\n\t\"status\": \"PENDING\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

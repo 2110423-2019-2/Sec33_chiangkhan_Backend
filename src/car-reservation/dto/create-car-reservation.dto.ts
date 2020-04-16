@@ -3,7 +3,7 @@ import { IsEnum, IsNotEmpty } from "class-validator";
 import { Point } from "geojson";
 
 enum InitialStatus {
-  "RESERVED"
+  "PENDING"
 }
 
 export class CreateCarReservationDto {
