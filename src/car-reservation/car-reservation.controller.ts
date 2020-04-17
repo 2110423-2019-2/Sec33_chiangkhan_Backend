@@ -31,7 +31,7 @@ import { CarReservation } from "./car-reservation.entity";
     }
   },
   query: {
-    //allow: ["carReservationId", "pickupDate", "returnDate", "status", "price"],
+    allow: ["carReservationId", "pickupDate", "returnDate", "status", "price"],
     join: {
       lessee: {
         eager: true
@@ -91,7 +91,7 @@ export class CarReservationController implements CrudController<CarReservation>{
     try {
       const { price, startDate, endDate } = await this.carAvailabilityService.fetch(carAvailableId)
 
-      let hours = Math.floor((returnDate.getTime()-pickupDate.getTime())/1000/60/60);
+      let hours = Math.ceil((returnDate.getTime()-pickupDate.getTime())/1000/60/60);
       console.log(hours);
       const totalPrice = price * hours;
       console.log(totalPrice)
@@ -122,7 +122,7 @@ export class CarReservationController implements CrudController<CarReservation>{
     @ParsedRequest() req: CrudRequest,
     @ParsedBody() dto: UpdateStatusDto,
   ) {
-
+    console.log(dto);
     const { relatedCarAvailable: { carId } } = await this.base.getOneBase(req)
 
     switch (dto.status) {

@@ -28,8 +28,8 @@ export class carAvailableController {
             return this.carAvailableService.AddAvailability(user, dto);
         }
     
-    @Delete(':id')
-    deleteAailability(@Param('id') id): Promise<DeleteResult>{
+    @Delete(':availableId')
+    deleteAailability(@Param('availableId') id): Promise<DeleteResult>{
         return this.carAvailableService.deleteAvailability(id);
     }
 
