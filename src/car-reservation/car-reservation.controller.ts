@@ -91,9 +91,9 @@ export class CarReservationController implements CrudController<CarReservation>{
     try {
       const { price, startDate, endDate } = await this.carAvailabilityService.fetch(carAvailableId)
 
-      let hours = Math.ceil((returnDate.getTime()-pickupDate.getTime())/1000/60/60);
-      console.log(hours);
-      const totalPrice = price * hours;
+      let days = Math.ceil((returnDate.getTime()-pickupDate.getTime())/1000 / 60 / (60 * 24));
+      console.log(days);
+      const totalPrice = price * days;
       console.log(totalPrice)
 
       if ((+pickupDate >= +startDate) && (+returnDate <= +endDate)) {
