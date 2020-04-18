@@ -117,4 +117,11 @@ export class Member {
     nullable: false
   })
   cash: number;
+
+  @Column({
+    type: 'boolean',
+    default: false,
+    nullable: false,
+  })
+  is_admin: boolean;
 }
