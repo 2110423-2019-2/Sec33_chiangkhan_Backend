@@ -88,14 +88,13 @@ export class CarReservationController implements CrudController<CarReservation>{
     const { lesseeId } = req.parsed.authPersist
 
     try {
-      const { price, startDate, endDate } = await this.carAvailabilityService.fetch(carAvailableId)
+      const { price } = await this.carAvailabilityService.fetch(carAvailableId)
 
       const days = Math.ceil((returnDate.getTime()-pickupDate.getTime())/1000 / 60 / (60 * 24));
       console.log(days);
       const totalPrice = price * days;
       console.log(totalPrice)
 
-      if ((+pickupDate >= +startDate) && (+returnDate <= +endDate)) {
         await this.memberService.purchase(lesseeId, totalPrice)
         return await this.base.createOneBase(
           req,
@@ -106,9 +105,6 @@ export class CarReservationController implements CrudController<CarReservation>{
             lessee: null
           }
         )
-      } else {
-        throw 'pickupDate and returnDate did not applicable with this availability'
-      }
 
     } catch (error) {
       throw new NotAcceptableException(error)
