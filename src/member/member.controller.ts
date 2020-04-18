@@ -33,5 +33,11 @@ export class MemberController {
         console.log(req.user.id);
         return this.memberService.getMember(req.user.id);
     }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Get(':userId/name')
+    async getName(@Param('userId') userId): Promise<any> {
+        return this.memberService.getNameMember(userId);
+    }
     
 }

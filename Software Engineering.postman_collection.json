@@ -470,6 +470,48 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "GetNameById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/member/3/name",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"member",
+						"3",
+						"name"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCarInfo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/car/4/carInfo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"car",
+						"4",
+						"carInfo"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}

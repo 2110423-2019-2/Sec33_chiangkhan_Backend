@@ -98,5 +98,11 @@ export class MemberService {
   async getMember(userId: number) {
     return this.memberRepository.findOne(userId);
   }
+
+  async getNameMember(Id: number) {
+    const mem = this.memberRepository.findOne(Id);
+    const nameMember = { userId: Id, name: (await mem).name};
+    return nameMember;
+  }
   
 }

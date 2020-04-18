@@ -87,4 +87,9 @@ export class CarController {
     return this.carService.getreview(carId);
   }
 
+  @Get(':carId/carInfo')
+  async carInfo(@Param('carId') carId): Promise <any> {
+    return this.carService.getCarInfo(carId);
+  }
+
 }
