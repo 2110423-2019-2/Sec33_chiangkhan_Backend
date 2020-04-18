@@ -31,7 +31,6 @@ import { CarReservation } from "./car-reservation.entity";
     }
   },
   query: {
-    allow: ["carReservationId", "pickupDate", "returnDate", "status", "price"],
     join: {
       lessee: {
         eager: true
@@ -122,7 +121,7 @@ export class CarReservationController implements CrudController<CarReservation>{
     @ParsedRequest() req: CrudRequest,
     @ParsedBody() dto: UpdateStatusDto,
   ) {
-    console.log(dto);
+    req.parsed.fields = ["carReservationId", "pickupDate", "returnDate", "status", "price"]
     const { relatedCarAvailable: { carId } } = await this.base.getOneBase(req)
 
     switch (dto.status) {
