@@ -38,7 +38,8 @@ export class AuthenticationController {
   @UseGuards(AuthGuard('jwt'))
   async getStatus(@Req() request: Request) {
     return {
-      "id": request.user['id']
+      "id": request.user['id'],
+      "is_admin": (await this.memberService.getMember(request.user['id'])).is_admin
     }
   }
 }
