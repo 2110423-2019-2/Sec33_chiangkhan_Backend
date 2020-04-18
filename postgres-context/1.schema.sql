@@ -15,7 +15,8 @@ CREATE TABLE member (
   credit_card_number TEXT,
   credit_card_security TEXT,
   credit_card_expiry TEXT,
-  cash INT DEFAULT 10000
+  cash INT DEFAULT 10000,
+  is_admin BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 CREATE TABLE car (
