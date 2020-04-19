@@ -16,8 +16,8 @@ insert into car ( owner_id, licenseplate, capacity, car_model, car_description, 
 Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.
 
 Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', 5, 'http://dummyimage.com/250x250.png/cc0000/ffffff');
-insert into car ( owner_id, licenseplate, capacity, car_model, car_description, avg_rating, photo_of_car_document) values ( 2, '74-3A-46-C7-11-E7', 3, 'Honda', 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.
-
+insert into car ( owner_id, licenseplate, capacity, car.
+_model, car_description, avg_rating, photo_of_car_document) values ( 2, '74-3A-46-C7-11-E7', 3, 'Honda', 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum
 Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.', 4, 'http://dummyimage.com/250x250.png/ff4444/ffffff');
 insert into car ( owner_id, licenseplate, capacity, car_model, car_description, avg_rating, photo_of_car_document) values ( 5, '01-E4-6D-F5-0A-EA', 4, 'Chevrolet', 'Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.
 
