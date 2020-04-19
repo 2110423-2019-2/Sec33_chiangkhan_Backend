@@ -18,7 +18,7 @@ export class CarAvailable {
   @ManyToOne(() => Car, {
     primary: true,
     nullable: false,
-    lazy: false
+    lazy: false,
   })
   @JoinColumn({
     name: 'car_id',

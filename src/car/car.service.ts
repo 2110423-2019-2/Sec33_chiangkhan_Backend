@@ -1,5 +1,5 @@
 import { Position, BBox } from "geojson";
-import { InsertResult, SelectQueryBuilder } from "typeorm";
+import { InsertResult, SelectQueryBuilder, DeleteResult } from "typeorm";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 
@@ -114,5 +114,10 @@ export class CarService {
 
   async getCarInfo(carId: number) {
     return this.carRepository.findOne(carId);
+  }
+
+  async deleteCarById(id: number) : Promise<DeleteResult>{
+    console.log(this.carRepository.findOneOrFail(id));
+    return this.carRepository.delete(id);
   }
 }

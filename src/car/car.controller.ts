@@ -10,9 +10,10 @@ import {
   UsePipes,
   Request,
   Param,
+  Delete,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { InsertResult } from 'typeorm';
+import { InsertResult, DeleteResult } from 'typeorm';
 
 import { UserInterceptor } from 'src/interceptor/user.interceptor';
 import { ParseArrayPipe } from 'src/common/array.pipe';
@@ -90,6 +91,11 @@ export class CarController {
   @Get(':carId/carInfo')
   async carInfo(@Param('carId') carId): Promise <any> {
     return this.carService.getCarInfo(carId);
+  }
+
+  @Delete(':carId/deleteCar')
+    deleteCar(@Param('carId') id): Promise<DeleteResult>{
+        return this.carService.deleteCarById(id);
   }
 
 }
