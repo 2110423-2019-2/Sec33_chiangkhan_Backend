@@ -6,6 +6,7 @@ import { UpdateMemberDto } from './dto/update-member.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { Crud, CrudAuth, CrudController, Override } from '@nestjsx/crud';
 import { Member } from './member.entity';
+import { NotUpdatePassDto } from './dto/not-update-pass.dto';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('member')
@@ -38,6 +39,16 @@ export class MemberController {
     @Get(':userId/name')
     async getName(@Param('userId') userId): Promise<any> {
         return this.memberService.getNameMember(userId);
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Put('notupdatepass')
+    async notUpdatePass(@Request() req,@Body() createMemberDto: NotUpdatePassDto): Promise<any> {
+        try{
+            return await this.memberService.notUpdatePassMember(req.user.id,createMemberDto);
+        } catch (error) {
+
+        }
     }
     
 }

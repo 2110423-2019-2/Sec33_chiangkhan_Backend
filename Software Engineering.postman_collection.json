@@ -512,6 +512,35 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "notUpdatePassword",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"phone_num\": \"string\",\n  \"bank_account\": \"string\",\n  \"bank_account_branch\": \"string\",\n  \"credit_card_number\": \"string\",\n  \"credit_card_expiry\": \"string\",\n  \"credit_card_security\": \"string\",\n  \"driving_license\": \"string\",\n  \"address\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/member/notupdatepass",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"member",
+						"notupdatepass"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
