@@ -109,7 +109,9 @@ export class CarService {
   }
 
   async getreview(carId: number) {
-    return this.carRepository.find({where:{carId},join: {alias:'cars', innerJoinAndSelect:{ review: 'cars.review'}}});
+    const carReview = await this.carRepository.createQueryBuilder("car").innerJoinAndSelect("car.review","review","car.car_id = review_id").innerJoinAndSelect("review.owner","member","review.owner_id = user_id").getMany();
+    return carReview;
+    // return this.carRepository.find({where:{carId},join: {alias:'cars', innerJoinAndSelect:{ review: 'cars.review'}}});
   }
 
   async getCarInfo(carId: number) {
@@ -120,4 +122,6 @@ export class CarService {
     console.log(this.carRepository.findOneOrFail(id));
     return this.carRepository.delete(id);
   }
+
+  
 }
