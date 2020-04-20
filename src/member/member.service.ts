@@ -47,7 +47,7 @@ export class MemberService {
   async registerService(
     createMemberDto: CreateMemberDto
   ): Promise<InsertResult> {
-    return this.memberRepository.insert(createMemberDto)
+    return this.memberRepository.insert(createMemberDto);
   }
 
   async purchase(

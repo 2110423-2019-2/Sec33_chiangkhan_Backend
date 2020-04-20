@@ -95,7 +95,7 @@ export class CarReservationController implements CrudController<CarReservation>{
       const totalPrice = price * days;
       console.log(totalPrice)
 
-      const mem = this.memberService.getMember(lesseeId);
+      const mem = await this.memberService.getMember(lesseeId);
       if((await mem).cash < price){
         return {status: 'Not enough cash'};
       }

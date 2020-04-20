@@ -17,7 +17,9 @@ export class UserController {
         try{
             return await this.memberService.registerService(createMemberDto);
         } catch (error) {
-            
+            if (error.message = 'duplicate key value violates unique constraint "member_username_key"') {
+                return {status: 'This username already exists'};
+            }
         }
     }
 }
