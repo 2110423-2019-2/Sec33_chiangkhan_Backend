@@ -1,4 +1,4 @@
-import { Controller, UseGuards, NotAcceptableException } from "@nestjs/common";
+import { Controller, UseGuards, NotAcceptableException, Res } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { Crud, CrudController, CrudAuth, Override, ParsedRequest, CrudRequest, ParsedBody } from "@nestjsx/crud";
 
@@ -93,15 +93,19 @@ export class CarReservationController implements CrudController<CarReservation>{
       const days = Math.ceil((returnDate.getTime()-pickupDate.getTime())/1000 / 60 / (60 * 24));
       const totalPrice = price * days;
 
-      const mem = await this.memberService.getMember(lesseeId);
-      if((await mem).cash < price){
-        return {status: 'Not enough cash'};
-      }
+      // const mem = await this.memberService.getMember(lesseeId);
+      // if((await mem).cash < price){
+      //   return {status: 'Not enough cash'};
+      // }
 
       const CarIdByAvaId = Number(await this.carAvailabilityService.getCarId(carAvailableId));
       console.log(CarIdByAvaId);
 
+      try{
         await this.memberService.purchase(lesseeId, totalPrice)
+      } catch(e) {
+        throw e.message;
+      }
         return await this.base.createOneBase(
           req,
           {
