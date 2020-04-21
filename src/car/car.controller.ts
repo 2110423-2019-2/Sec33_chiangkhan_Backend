@@ -98,7 +98,7 @@ export class CarController {
         return this.carService.deleteCarById(id);
   }
 
-  @Get(':carId/revervation')
+  @Get(':carId/revervationHistory')
   async findReservation (@Param('carId') id): Promise<any> {
     return this.carService.getHistory(id);
   }

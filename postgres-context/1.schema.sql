@@ -45,6 +45,7 @@ CREATE TABLE car_available (
 CREATE TABLE car_reservation (
   car_reservation_id SERIAL PRIMARY KEY,
   car_available_id INT REFERENCES car_available(car_available_id) NOT NULL,
+  car_id INT REFERENCES car(car_id) ON DELETE CASCADE,
   lessee_id INT REFERENCES member(user_id) NOT NULL,
   status TEXT,
   pickup_date TIMESTAMP,

@@ -44,5 +44,10 @@ export class CarAvailableService {
     console.log(this.carAvaiRepository.findOneOrFail(id));
     return this.carAvaiRepository.delete(id);
   }
+
+  async getCarId(AvaId: number): Promise<Number>{
+    const e =  await this.carAvaiRepository.findOne(AvaId);
+    return (await e).carId;
+  }
   
 }

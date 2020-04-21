@@ -131,9 +131,10 @@ export class CarService {
   async getHistory(carId: number) {
     const a = await this.carRepository
       .createQueryBuilder('car')
-      .innerJoinAndSelect('car.availability', 'availability')
+      .innerJoinAndSelect('car.reservation', 'reservation','car.car_id = reservation.car_id')
+      .innerJoinAndSelect('reservation.lessee', 'member', 'reservation.lessee_id = user_id')
       .where({ carId })
-      .getMany(); //.innerJoinAndSelect("availability.");
+      .getMany();
     return a;
   }
 }

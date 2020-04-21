@@ -293,7 +293,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"string asakddk\",\n  \"username\": \"string1234\",\n  \"password\": \"string1234\",\n  \"email\": \"stringadsaas\",\n  \"phone_num\": \"strisadng\",\n  \"bank_account\": \"striadsang\",\n  \"bank_account_branch\": \"sadstring\",\n  \"credit_card_number\": \"striadsasdng\",\n  \"credit_card_expiry\": \"strinadsg\",\n  \"credit_card_security\": \"striadng\",\n  \"driving_license\": \"striasdng\",\n  \"address\": \"striasdng\"\n}",
+					"raw": "{\n  \"name\": \"strasdask\",\n  \"username\": \"adsdsadas2\",\n  \"password\": \"string1234\",\n  \"email\": \"stringadsaas\",\n  \"phone_num\": \"strisadng\",\n  \"bank_account\": \"striadsang\",\n  \"bank_account_branch\": \"sadstring\",\n  \"credit_card_number\": \"striadsasdng\",\n  \"credit_card_expiry\": \"strinadsg\",\n  \"credit_card_security\": \"striadng\",\n  \"driving_license\": \"striasdng\",\n  \"address\": \"striasdng\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -301,12 +301,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/users",
+					"raw": "localhost:8080/api/users",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "8080",
 					"path": [
+						"api",
 						"users"
 					]
 				}
@@ -558,6 +559,27 @@
 						"car",
 						"10",
 						"deleteCar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCarHistory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/car/22/revervationHistory",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"car",
+						"22",
+						"revervationHistory"
 					]
 				}
 			},

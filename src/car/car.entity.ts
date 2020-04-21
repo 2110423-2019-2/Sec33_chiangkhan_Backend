@@ -2,6 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToMany, ManyToOn
 import { Member } from "src/member/member.entity";
 import { CarAvailable } from "src/car-available/car-available.entity";
 import { Review } from "src/review/review.entity";
+import { CarReservation } from "src/car-reservation/car-reservation.entity";
 
 @Entity({ name: 'car' })
 export class Car {
@@ -42,6 +43,17 @@ export class Car {
     }
   )
   review?: Review
+
+  @OneToMany(
+    () => CarReservation,
+    carReserve => carReserve.car,
+    {
+      eager: false,
+      lazy: false,
+      nullable: true,
+    }
+  )
+  reservation?: CarReservation
 
   @Column({
     type: 'integer',
