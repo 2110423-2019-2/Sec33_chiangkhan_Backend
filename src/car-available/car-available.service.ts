@@ -1,17 +1,20 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { FindConditions, DeleteResult } from "typeorm";
-
+import { MemberService } from '../member/member.service';
 import { CarAvailable } from "./car-available.entity";
 import { CarAvailableRepository } from "./car-available.repository";
 import { AddCarAvailabilityDto } from "./dto/add-availability.dto";
 import { InsertResult } from "typeorm";
+import { CarService } from "src/car/car.service";
 
 @Injectable()
 export class CarAvailableService {
   constructor(
     @InjectRepository(CarAvailable)
     private readonly carAvaiRepository: CarAvailableRepository,
+    private readonly memberService: MemberService,
+    private readonly carService: CarService,
   ) { }
 
   async findAll(query?: FindConditions<CarAvailable>): Promise<CarAvailable[]> {
@@ -29,10 +32,13 @@ export class CarAvailableService {
   }
 
   async AddAvailability(user: number, dto: AddCarAvailabilityDto) : Promise<InsertResult> {
+    const c = await (await this.carService.getCarInfo(dto.carId)).ownerId;
+    const n = await (await this.memberService.getNameMember(c)).name;
     const newCarAvailability: CarAvailable = {
       ...dto,
       carAvailableId: null,
       car: null,
+      ownerName: n,
       // price: 900,
       // agreement: 'DO NOT STEAL MY CAR',
     }

@@ -1,3 +1,4 @@
+\c chiangkhan
 insert into review (owner_id, car_id, comment, rating) values (1, 1, 'User-centric transitional task-force', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 2, 'Multi-channelled actuating Graphical User Interface', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 3, 'Profound asymmetric capacity', 3);

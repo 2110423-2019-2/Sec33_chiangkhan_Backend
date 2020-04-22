@@ -4,11 +4,16 @@ import { AuthModule } from "src/member/auth.module";
 import { carAvailableController } from "./car-available.controller";
 import { CarAvailableService } from "./car-available.service";
 import { CarAvailable } from "./car-available.entity";
+import { Member } from "src/member/member.entity";
+import { Car } from "src/car/car.entity";
+import { CarService } from "src/car/car.service";
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
       CarAvailable,
+      Member,
+      Car
     ]),
     AuthModule
   ],
@@ -18,6 +23,7 @@ import { CarAvailable } from "./car-available.entity";
   providers: [
     CarAvailableService,
     ValidationPipe,
+    CarService,
   ],
   exports: [],
 })

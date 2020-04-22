@@ -27,6 +27,12 @@ export class CarAvailable {
   car: Car;
 
   @Column({
+    type: 'text',
+    nullable: false,
+  })
+  ownerName: string;
+
+  @Column({
     type: 'point',
     nullable: false,
   })

@@ -35,6 +35,7 @@ CREATE TABLE car (
 CREATE TABLE car_available (
   car_available_id SERIAL PRIMARY KEY,
   car_id INT REFERENCES car(car_id) ON DELETE CASCADE,
+  owner_name TEXT,
   pickup_location POINT,
   start_date TIMESTAMP,
   end_date TIMESTAMP,
