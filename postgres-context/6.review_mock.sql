@@ -1,3 +1,4 @@
+\c chiangkhan
 insert into review (owner_id, car_id, comment, rating) values (1, 1, 'Digitized scalable conglomeration', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 2, 'Open-architected neutral encoding', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 3, 'Public-key composite throughput', 3);
