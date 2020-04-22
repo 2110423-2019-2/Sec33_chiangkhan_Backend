@@ -7,7 +7,6 @@ insert into review (owner_id, car_id, comment, rating) values (6, 6, 'Organized 
 insert into review (owner_id, car_id, comment, rating) values (7, 7, 'Focused dedicated secured line', 2);
 insert into review (owner_id, car_id, comment, rating) values (8, 8, 'Pre-emptive holistic moratorium', 3);
 insert into review (owner_id, car_id, comment, rating) values (9, 9, 'Multi-layered multi-state standardization', 4);
-insert into review (owner_id, car_id, comment, rating) values (0, 10, 'Profit-focused 6th generation open system', 0);
 insert into review (owner_id, car_id, comment, rating) values (1, 11, 'Organic even-keeled architecture', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 12, 'Pre-emptive full-range encryption', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 13, 'Optional interactive structure', 3);
@@ -17,7 +16,6 @@ insert into review (owner_id, car_id, comment, rating) values (6, 16, 'Digitized
 insert into review (owner_id, car_id, comment, rating) values (7, 17, 'Public-key discrete moratorium', 2);
 insert into review (owner_id, car_id, comment, rating) values (8, 18, 'Open-architected grid-enabled strategy', 3);
 insert into review (owner_id, car_id, comment, rating) values (9, 19, 'Persevering explicit capability', 4);
-insert into review (owner_id, car_id, comment, rating) values (0, 20, 'Object-based foreground synergy', 0);
 insert into review (owner_id, car_id, comment, rating) values (1, 21, 'Configurable next generation application', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 22, 'Triple-buffered exuding complexity', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 23, 'Secured demand-driven local area network', 3);
@@ -27,7 +25,6 @@ insert into review (owner_id, car_id, comment, rating) values (6, 26, 'Intuitive
 insert into review (owner_id, car_id, comment, rating) values (7, 27, 'Balanced bandwidth-monitored access', 2);
 insert into review (owner_id, car_id, comment, rating) values (8, 28, 'Optional foreground definition', 3);
 insert into review (owner_id, car_id, comment, rating) values (9, 29, 'Re-engineered zero administration paradigm', 4);
-insert into review (owner_id, car_id, comment, rating) values (0, 30, 'Synergistic local Graphic Interface', 0);
 insert into review (owner_id, car_id, comment, rating) values (1, 31, 'Streamlined neutral frame', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 32, 'Compatible client-server task-force', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 33, 'Realigned systemic project', 3);
@@ -37,7 +34,6 @@ insert into review (owner_id, car_id, comment, rating) values (6, 36, 'Vision-or
 insert into review (owner_id, car_id, comment, rating) values (7, 37, 'Self-enabling transitional archive', 2);
 insert into review (owner_id, car_id, comment, rating) values (8, 38, 'Virtual intangible local area network', 3);
 insert into review (owner_id, car_id, comment, rating) values (9, 39, 'Reactive zero tolerance support', 4);
-insert into review (owner_id, car_id, comment, rating) values (0, 40, 'Face to face transitional parallelism', 0);
 insert into review (owner_id, car_id, comment, rating) values (1, 41, 'Front-line holistic complexity', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 42, 'Up-sized bifurcated task-force', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 43, 'Robust object-oriented moderator', 3);
@@ -47,7 +43,6 @@ insert into review (owner_id, car_id, comment, rating) values (6, 46, 'Integrate
 insert into review (owner_id, car_id, comment, rating) values (7, 47, 'Robust multi-tasking initiative', 2);
 insert into review (owner_id, car_id, comment, rating) values (8, 48, 'Universal intangible analyzer', 3);
 insert into review (owner_id, car_id, comment, rating) values (9, 49, 'Face to face disintermediate open architecture', 4);
-insert into review (owner_id, car_id, comment, rating) values (0, 50, 'Universal encompassing utilisation', 0);
 insert into review (owner_id, car_id, comment, rating) values (1, 51, 'Progressive upward-trending adapter', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 52, 'Automated leading edge database', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 53, 'Phased object-oriented local area network', 3);
@@ -57,7 +52,6 @@ insert into review (owner_id, car_id, comment, rating) values (6, 56, 'Cross-gro
 insert into review (owner_id, car_id, comment, rating) values (7, 57, 'Switchable reciprocal internet solution', 2);
 insert into review (owner_id, car_id, comment, rating) values (8, 58, 'Customizable intangible conglomeration', 3);
 insert into review (owner_id, car_id, comment, rating) values (9, 59, 'Grass-roots motivating local area network', 4);
-insert into review (owner_id, car_id, comment, rating) values (0, 60, 'Public-key regional groupware', 0);
 insert into review (owner_id, car_id, comment, rating) values (1, 61, 'Future-proofed even-keeled capacity', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 62, 'Team-oriented tangible artificial intelligence', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 63, 'Organized scalable adapter', 3);
@@ -67,7 +61,6 @@ insert into review (owner_id, car_id, comment, rating) values (6, 66, 'Team-orie
 insert into review (owner_id, car_id, comment, rating) values (7, 67, 'Phased well-modulated info-mediaries', 2);
 insert into review (owner_id, car_id, comment, rating) values (8, 68, 'Open-source grid-enabled extranet', 3);
 insert into review (owner_id, car_id, comment, rating) values (9, 69, 'Down-sized leading edge firmware', 4);
-insert into review (owner_id, car_id, comment, rating) values (0, 70, 'Expanded scalable methodology', 0);
 insert into review (owner_id, car_id, comment, rating) values (1, 71, 'Cross-platform explicit policy', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 72, 'Digitized analyzing success', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 73, 'Digitized content-based service-desk', 3);
@@ -77,7 +70,6 @@ insert into review (owner_id, car_id, comment, rating) values (6, 76, 'Visionary
 insert into review (owner_id, car_id, comment, rating) values (7, 77, 'Advanced radical firmware', 2);
 insert into review (owner_id, car_id, comment, rating) values (8, 78, 'Persevering empowering internet solution', 3);
 insert into review (owner_id, car_id, comment, rating) values (9, 79, 'Implemented multi-tasking conglomeration', 4);
-insert into review (owner_id, car_id, comment, rating) values (0, 80, 'Optional methodical array', 0);
 insert into review (owner_id, car_id, comment, rating) values (1, 81, 'Expanded needs-based matrices', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 82, 'Secured 5th generation superstructure', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 83, 'Phased eco-centric portal', 3);
@@ -87,7 +79,6 @@ insert into review (owner_id, car_id, comment, rating) values (6, 86, 'Polarised
 insert into review (owner_id, car_id, comment, rating) values (7, 87, 'Fully-configurable exuding installation', 2);
 insert into review (owner_id, car_id, comment, rating) values (8, 88, 'Vision-oriented optimizing orchestration', 3);
 insert into review (owner_id, car_id, comment, rating) values (9, 89, 'Adaptive methodical analyzer', 4);
-insert into review (owner_id, car_id, comment, rating) values (0, 90, 'Vision-oriented bifurcated portal', 0);
 insert into review (owner_id, car_id, comment, rating) values (1, 91, 'Enhanced 6th generation leverage', 1);
 insert into review (owner_id, car_id, comment, rating) values (2, 92, 'Assimilated non-volatile superstructure', 2);
 insert into review (owner_id, car_id, comment, rating) values (3, 93, 'De-engineered non-volatile service-desk', 3);
@@ -97,4 +88,3 @@ insert into review (owner_id, car_id, comment, rating) values (6, 96, 'Enterpris
 insert into review (owner_id, car_id, comment, rating) values (7, 97, 'Operative client-server Graphic Interface', 2);
 insert into review (owner_id, car_id, comment, rating) values (8, 98, 'Extended fresh-thinking attitude', 3);
 insert into review (owner_id, car_id, comment, rating) values (9, 99, 'Expanded dedicated intranet', 4);
-insert into review (owner_id, car_id, comment, rating) values (0, 0, 'Cross-platform next generation standardization', 0);
