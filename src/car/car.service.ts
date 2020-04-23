@@ -2,7 +2,6 @@ import { Position, BBox } from 'geojson';
 import { InsertResult, SelectQueryBuilder, DeleteResult } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-
 import { Car } from './car.entity';
 import { CarRepository } from './car.repository';
 import { AddCarDto } from './dto/create-car.dto';
@@ -116,7 +115,6 @@ export class CarService {
       .where({ carId })
       .getMany();
     return carReview;
-    // return this.carRepository.find({where:{carId},join: {alias:'cars', innerJoinAndSelect:{ review: 'cars.review'}}});
   }
 
   async getCarInfo(carId: number) {

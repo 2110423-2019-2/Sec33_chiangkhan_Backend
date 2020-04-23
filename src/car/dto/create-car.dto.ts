@@ -3,8 +3,6 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class AddCarDto {
 
-  // ownerId: number;
-
   @ApiProperty({
     type: "string",
     description: "Car's license plate",

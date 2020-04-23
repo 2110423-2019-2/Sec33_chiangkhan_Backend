@@ -2,7 +2,6 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsEnum, IsString, IsOptional, IsNumber, IsArray, ValidateNested, ArrayMinSize, ArrayMaxSize } from "class-validator";
 import { Type } from "class-transformer";
 import { Position } from "geojson";
-
 import { Car } from "../car.entity";
 
 enum orderby {

@@ -39,8 +39,6 @@ export class CarAvailableService {
       carAvailableId: null,
       car: null,
       ownerName: n,
-      // price: 900,
-      // agreement: 'DO NOT STEAL MY CAR',
     }
     console.log(newCarAvailability);
     return this.carAvaiRepository.insert(newCarAvailability);

@@ -1,11 +1,8 @@
 import { MemberService } from './member.service';
-import { Controller, Request,Post, ValidationPipe, UsePipes, Body, Put, Param, UseGuards, Get, Req } from '@nestjs/common';
-import { CreateMemberDto } from './dto/create-member.dto';
+import { Controller, Request, UsePipes, Body, Put, Param, UseGuards, Get } from '@nestjs/common';
 import { CreateMemberPipe } from './create-member.pipe';
 import { UpdateMemberDto } from './dto/update-member.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { Crud, CrudAuth, CrudController, Override } from '@nestjsx/crud';
-import { Member } from './member.entity';
 import { NotUpdatePassDto } from './dto/not-update-pass.dto';
 
 @UseGuards(AuthGuard('jwt'))

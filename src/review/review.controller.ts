@@ -4,8 +4,6 @@ import {
     ValidationPipe,
     Post,
     Request,
-    Get,
-    Param,
   } from '@nestjs/common';
 import { Controller, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
@@ -13,7 +11,6 @@ import { UserInterceptor } from "src/interceptor/user.interceptor";
 import { ReviewService } from './review.service';
 import { InsertResult } from 'typeorm';
 import { AddReviewDto } from './dto/add-review.dto';
-import { Review } from './review.entity';
 
 
 @Controller('review')
