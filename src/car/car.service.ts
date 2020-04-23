@@ -117,6 +117,15 @@ export class CarService {
     return carReview;
   }
 
+  async getAllreview() {
+    const carReview = await this.carRepository
+      .createQueryBuilder('car')
+      .innerJoinAndSelect('car.review', 'review', 'car.car_id = review.car_id')
+      .innerJoinAndSelect('review.owner', 'member', 'review.owner_id = user_id')
+      .getMany();
+    return carReview;
+  }
+
   async getCarInfo(carId: number) {
     return this.carRepository.findOne(carId);
   }

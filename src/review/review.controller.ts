@@ -4,6 +4,7 @@ import {
     ValidationPipe,
     Post,
     Request,
+    Get,
   } from '@nestjs/common';
 import { Controller, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
@@ -28,6 +29,16 @@ export class reviewController {
         @Body(new ValidationPipe()) dto: AddReviewDto
     ) : Promise<InsertResult> {
         return this.reviewService.addReview(req.user.id ,dto);
+        // return this.reviewService.updateReview()
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Get()
+    updateReview(
+        @Request() req,
+    ) {
+        // return this.reviewService.addReview(req.user.id ,dto);
+        return this.reviewService.updateReview()
     }
 
 }

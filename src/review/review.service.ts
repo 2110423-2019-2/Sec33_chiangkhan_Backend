@@ -28,7 +28,32 @@ export class ReviewService {
         return this.reviewRepository.insert(newReview);
     }
 
+    async updateReview(){
+        const r = await (this.carService.getAllreview());
+        r.forEach(async (element) => {
+            const newAvg = await this.getavg1(element.review);
+            this.carService.updateRating(element.carId, newAvg);
+        })
+    }
 
+    async getavg1(allReview : Object) {
+        const ObjectSize = function(obj) {
+            var size = 0, key;
+            for (key in obj) {
+                if (obj.hasOwnProperty(key)) size++;
+            }
+            return size;
+        };
+        const l = ObjectSize(allReview);
+        var i, s=0;
+        if(l>0) {
+            for (i = 0; i < l; i++) {
+                s += allReview[i]["rating"];
+            }
+        }
+        const ans = Math.round(s/l);
+        return ans;
+    }
     async getavg(allReview : Object, newRating: number) {
         const ObjectSize = function(obj) {
             var size = 0, key;
