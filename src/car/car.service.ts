@@ -137,4 +137,8 @@ export class CarService {
       .getMany();
     return a;
   }
+
+  async updateRating(carId: number, newRating: number) {
+    return this.carRepository.update({carId},{avgRating: newRating});
+  }
 }
