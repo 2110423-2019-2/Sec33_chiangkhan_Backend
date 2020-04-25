@@ -23,7 +23,12 @@ export class ReviewService {
             owner: null,
         }
         const r = await (this.carService.getreview(dto.carId));
-        const newAvg = await this.getavg(r[0]["review"],dto.rating);
+        var newAvg;
+        if(typeof(r[0]) !== "undefined"){
+            newAvg = await this.getavg(r[0]["review"],dto.rating);
+        } else {
+            newAvg = dto.rating;
+        }
         await this.carService.updateRating(dto.carId, newAvg);
         return this.reviewRepository.insert(newReview);
     }
