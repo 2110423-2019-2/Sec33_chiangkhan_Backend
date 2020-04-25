@@ -119,6 +119,12 @@ export class Member {
   cash: number;
 
   @Column({
+    type: 'text',
+    nullable: true,
+  })
+  member_profile: string;
+
+  @Column({
     type: 'boolean',
     default: false,
     nullable: false,

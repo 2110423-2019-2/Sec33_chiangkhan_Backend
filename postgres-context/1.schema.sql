@@ -16,6 +16,7 @@ CREATE TABLE member (
   credit_card_security TEXT,
   credit_card_expiry TEXT,
   cash INT DEFAULT 10000 CHECK (cash > 0),
+  member_profile TEXT,
   is_admin BOOLEAN DEFAULT FALSE NOT NULL
 );
 

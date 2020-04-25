@@ -86,4 +86,11 @@ export class CreateMemberDto{
     })
     @IsString()
     address: string;
+
+    @ApiProperty({
+        type: 'string',
+        description: "member image",
+      })
+      @IsString()
+      member_profile: string;
 }
