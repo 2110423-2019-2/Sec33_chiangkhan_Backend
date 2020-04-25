@@ -120,5 +120,24 @@ export class MemberService {
       {userId},notUpdatepassDto
     )
   }
+
+  async updatePhoto(
+    userId: number,
+    url:string,
+  ) {
+    let memberInfo: Member;
+    try {
+      memberInfo = await this.memberRepository.findOneOrFail({
+        where: {userId}
+      })
+    } catch (error) {
+      throw new Error(error)
+    }
+    return await this.memberRepository.update(
+      {userId} , {member_profile:url}
+    )
+  }
+
+  
   
 }

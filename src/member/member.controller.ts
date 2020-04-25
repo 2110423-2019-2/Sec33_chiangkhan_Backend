@@ -47,5 +47,15 @@ export class MemberController {
 
         }
     }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Put('updatePhoto')
+    async updatePhoto(@Request() req,@Body('newUrl') url: string): Promise<any> {
+        try{
+            return await this.memberService.updatePhoto(req.user.id,url);
+        } catch (error) {
+
+        }
+    }
     
 }
