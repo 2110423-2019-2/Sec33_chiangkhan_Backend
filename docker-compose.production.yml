@@ -1,7 +1,0 @@
-version: "3"
-
-services:
-  frontend:
-    image: theminer3746/se-frontend:latest
-    ports:
-      - 4200:4200
