@@ -15,7 +15,8 @@ CREATE TABLE member (
   credit_card_number TEXT,
   credit_card_security TEXT,
   credit_card_expiry TEXT,
-  cash INT DEFAULT 10000,
+  cash INT DEFAULT 10000 CHECK (cash > 0),
+  member_profile TEXT,
   is_admin BOOLEAN DEFAULT FALSE NOT NULL
 );
 
@@ -34,7 +35,8 @@ CREATE TABLE car (
 
 CREATE TABLE car_available (
   car_available_id SERIAL PRIMARY KEY,
-  car_id INT REFERENCES car(car_id) NOT NULL,
+  car_id INT REFERENCES car(car_id) ON DELETE CASCADE,
+  owner_name TEXT,
   pickup_location POINT,
   start_date TIMESTAMP,
   end_date TIMESTAMP,
@@ -45,6 +47,7 @@ CREATE TABLE car_available (
 CREATE TABLE car_reservation (
   car_reservation_id SERIAL PRIMARY KEY,
   car_available_id INT REFERENCES car_available(car_available_id) NOT NULL,
+  car_id INT REFERENCES car(car_id) ON DELETE CASCADE,
   lessee_id INT REFERENCES member(user_id) NOT NULL,
   status TEXT,
   pickup_date TIMESTAMP,
@@ -55,7 +58,7 @@ CREATE TABLE car_reservation (
 CREATE TABLE review (
   review_id SERIAL PRIMARY KEY,
   owner_id INT REFERENCES member(user_id) NOT NULL,
-  car_id INT REFERENCES car(car_id) NOT NULL,
+  car_id INT REFERENCES car(car_id) ON DELETE CASCADE,
   comment TEXT,
   rating INT
 );

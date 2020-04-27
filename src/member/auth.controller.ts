@@ -3,8 +3,6 @@ import { MemberService } from './member.service';
 import { CookieInterceptor, CookieClearerInterceptor } from '../interceptor/cookie.interceptor';
 import { AuthenticationDto } from './dto/auth.dto';
 import { EntityNotFoundError } from "typeorm/error/EntityNotFoundError";
-import { JwtStrategy } from './jwt.strategy';
-import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 

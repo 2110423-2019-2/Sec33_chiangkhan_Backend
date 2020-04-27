@@ -18,13 +18,19 @@ export class CarAvailable {
   @ManyToOne(() => Car, {
     primary: true,
     nullable: false,
-    lazy: false
+    lazy: false,
   })
   @JoinColumn({
     name: 'car_id',
     referencedColumnName: 'carId',
   })
   car: Car;
+
+  @Column({
+    type: 'text',
+    nullable: false,
+  })
+  ownerName: string;
 
   @Column({
     type: 'point',

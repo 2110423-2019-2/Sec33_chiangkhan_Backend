@@ -293,7 +293,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"string asakddk\",\n  \"username\": \"string1234\",\n  \"password\": \"string1234\",\n  \"email\": \"stringadsaas\",\n  \"phone_num\": \"strisadng\",\n  \"bank_account\": \"striadsang\",\n  \"bank_account_branch\": \"sadstring\",\n  \"credit_card_number\": \"striadsasdng\",\n  \"credit_card_expiry\": \"strinadsg\",\n  \"credit_card_security\": \"striadng\",\n  \"driving_license\": \"striasdng\",\n  \"address\": \"striasdng\"\n}",
+					"raw": "{\n  \"name\": \"strasdask\",\n  \"username\": \"adsdsadas2\",\n  \"password\": \"string1234\",\n  \"email\": \"stringadsaas\",\n  \"phone_num\": \"strisadng\",\n  \"bank_account\": \"striadsang\",\n  \"bank_account_branch\": \"sadstring\",\n  \"credit_card_number\": \"striadsasdng\",\n  \"credit_card_expiry\": \"strinadsg\",\n  \"credit_card_security\": \"striadng\",\n  \"driving_license\": \"striasdng\",\n  \"address\": \"striasdng\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -301,12 +301,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/users",
+					"raw": "localhost:8080/api/users",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "8080",
 					"path": [
+						"api",
 						"users"
 					]
 				}
@@ -466,6 +467,119 @@
 						"api",
 						"carAvailable",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetNameById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/member/3/name",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"member",
+						"3",
+						"name"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCarInfo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/car/4/carInfo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"car",
+						"4",
+						"carInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "notUpdatePassword",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"phone_num\": \"string\",\n  \"bank_account\": \"string\",\n  \"bank_account_branch\": \"string\",\n  \"credit_card_number\": \"string\",\n  \"credit_card_expiry\": \"string\",\n  \"credit_card_security\": \"string\",\n  \"driving_license\": \"string\",\n  \"address\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/member/notupdatepass",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"member",
+						"notupdatepass"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/car/10/deleteCar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"car",
+						"10",
+						"deleteCar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCarHistory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/car/22/revervationHistory",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"car",
+						"22",
+						"revervationHistory"
 					]
 				}
 			},

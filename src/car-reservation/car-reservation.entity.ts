@@ -3,6 +3,7 @@ import { Point } from "geojson";
 
 import { CarAvailable } from "src/car-available/car-available.entity";
 import { Member } from "src/member/member.entity";
+import { Car } from "src/car/car.entity";
 
 @Entity()
 export class CarReservation {
@@ -29,6 +30,23 @@ export class CarReservation {
     referencedColumnName: 'carAvailableId',
   })
   relatedCarAvailable: CarAvailable;
+
+  @Column({
+    nullable: false,
+    name: 'car_id'
+  })
+  carId: number
+
+  @ManyToOne(() => Car, {
+    primary: true,
+    nullable: false,
+    lazy: false
+  })
+  @JoinColumn({
+    name: 'car_id',
+    referencedColumnName: 'carId',
+  })
+  car: Car;
 
   @Column({
     type: 'int',

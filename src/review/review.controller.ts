@@ -5,7 +5,6 @@ import {
     Post,
     Request,
     Get,
-    Param,
   } from '@nestjs/common';
 import { Controller, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
@@ -13,7 +12,6 @@ import { UserInterceptor } from "src/interceptor/user.interceptor";
 import { ReviewService } from './review.service';
 import { InsertResult } from 'typeorm';
 import { AddReviewDto } from './dto/add-review.dto';
-import { Review } from './review.entity';
 
 
 @Controller('review')
@@ -31,6 +29,16 @@ export class reviewController {
         @Body(new ValidationPipe()) dto: AddReviewDto
     ) : Promise<InsertResult> {
         return this.reviewService.addReview(req.user.id ,dto);
+        // return this.reviewService.updateReview()
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Get()
+    updateReview(
+        @Request() req,
+    ) {
+        // return this.reviewService.addReview(req.user.id ,dto);
+        return this.reviewService.updateReview()
     }
 
 }

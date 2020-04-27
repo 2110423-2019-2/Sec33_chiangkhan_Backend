@@ -1,11 +1,9 @@
 import { MemberService } from './member.service';
-import { Controller, Request,Post, ValidationPipe, UsePipes, Body, Put, Param, UseGuards, Get, Req } from '@nestjs/common';
-import { CreateMemberDto } from './dto/create-member.dto';
+import { Controller, Request, UsePipes, Body, Put, Param, UseGuards, Get } from '@nestjs/common';
 import { CreateMemberPipe } from './create-member.pipe';
 import { UpdateMemberDto } from './dto/update-member.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { Crud, CrudAuth, CrudController, Override } from '@nestjsx/crud';
-import { Member } from './member.entity';
+import { NotUpdatePassDto } from './dto/not-update-pass.dto';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('member')
@@ -32,6 +30,32 @@ export class MemberController {
     async getmember(@Request() req): Promise<any> {
         console.log(req.user.id);
         return this.memberService.getMember(req.user.id);
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Get(':userId/name')
+    async getName(@Param('userId') userId): Promise<any> {
+        return this.memberService.getNameMember(userId);
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Put('notupdatepass')
+    async notUpdatePass(@Request() req,@Body() createMemberDto: NotUpdatePassDto): Promise<any> {
+        try{
+            return await this.memberService.notUpdatePassMember(req.user.id,createMemberDto);
+        } catch (error) {
+
+        }
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Put('updatePhoto')
+    async updatePhoto(@Request() req,@Body('newUrl') url: string): Promise<any> {
+        try{
+            return await this.memberService.updatePhoto(req.user.id,url);
+        } catch (error) {
+
+        }
     }
     
 }

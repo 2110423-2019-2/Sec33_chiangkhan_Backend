@@ -1,7 +1,7 @@
 import { IsString, IsEnum, IsDateString, Matches, IsOptional, IsArray } from 'class-validator'
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
-export class CreateMemberDto{
+export class NotUpdatePassDto{
 
     @ApiProperty({
         type: "string",
@@ -9,20 +9,6 @@ export class CreateMemberDto{
     })
     @IsString()
     name: string;
-
-    @ApiProperty({
-        type: "string",
-        description: "username",
-    })
-    @IsString()
-    username: string;
-
-    @ApiProperty({
-        type: "string",
-        description: "password",
-    })
-    @IsString()
-    password: string;
 
     @ApiProperty({
         type: "string",
@@ -86,11 +72,4 @@ export class CreateMemberDto{
     })
     @IsString()
     address: string;
-
-    @ApiProperty({
-        type: 'string',
-        description: "member image",
-      })
-      @IsString()
-      member_profile: string;
 }

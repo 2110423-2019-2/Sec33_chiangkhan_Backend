@@ -7,6 +7,7 @@ import { sha256, Hasher } from "js-sha256";
 import { CreateMemberDto } from './dto/create-member.dto';
 import { InsertResult, MoreThanOrEqual } from 'typeorm';
 import { UpdateMemberDto } from './dto/update-member.dto';
+import { NotUpdatePassDto } from './dto/not-update-pass.dto';
 
 @Injectable(
   { scope: Scope.REQUEST }
@@ -46,7 +47,7 @@ export class MemberService {
   async registerService(
     createMemberDto: CreateMemberDto
   ): Promise<InsertResult> {
-    return this.memberRepository.insert(createMemberDto)
+    return this.memberRepository.insert(createMemberDto);
   }
 
   async purchase(
@@ -98,5 +99,45 @@ export class MemberService {
   async getMember(userId: number) {
     return this.memberRepository.findOne(userId);
   }
+
+  async getNameMember(Id: number) {
+    return this.memberRepository.findOne(Id);
+  }
+
+  async notUpdatePassMember(
+    userId: number,
+    notUpdatepassDto: NotUpdatePassDto,
+  ) {
+    let memberInfo: Member;
+    try {
+      memberInfo = await this.memberRepository.findOneOrFail({
+        where: {userId}
+      })
+    } catch (error) {
+      throw new Error(error)
+    }
+    return await this.memberRepository.update(
+      {userId},notUpdatepassDto
+    )
+  }
+
+  async updatePhoto(
+    userId: number,
+    url:string,
+  ) {
+    let memberInfo: Member;
+    try {
+      memberInfo = await this.memberRepository.findOneOrFail({
+        where: {userId}
+      })
+    } catch (error) {
+      throw new Error(error)
+    }
+    return await this.memberRepository.update(
+      {userId} , {member_profile:url}
+    )
+  }
+
+  
   
 }
